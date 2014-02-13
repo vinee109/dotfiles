@@ -86,7 +86,9 @@ function lx()
     pdflat "${file}" && open ${file%.tex}.pdf
 }
 
-#allows you to automatically navigate to either the cs61b or cs70 director
+#### BERKELEY CS CLASSES #####
+
+# shortcut for automatically navigating to various directories
 function goto(){
     [[ -z "$1" ]] && echo "$0: missing argument"
     if [ "$1" == "cs61b" ]; then
@@ -106,6 +108,7 @@ function goto(){
     fi
 }
 
+#checking grades
 function grades(){
     echo -e "Grades for CS61B"
     ssh ${SERVER_CS61B} "glookup"
@@ -113,6 +116,7 @@ function grades(){
     ssh ${SERVER_CS70} "glookup"
 }
 
+# check grade ranks in cs61b and cs70
 function grade_stats(){
     echo -e "Stats for CS61B"
     ssh ${SERVER_CS61B} "glookup -s \"Total\""
@@ -121,7 +125,7 @@ function grade_stats(){
 
 }
 
-#login to either cs61b or cs70
+#login to either cs61b or cs70 account based on argument
 function login(){
     [[ -z "$1" ]] && echo "$0: missing argument"
     if [ "$1" == "cs61b" ]; then
@@ -133,6 +137,7 @@ function login(){
         ssh $SERVER_CS70
     fi
 }
+
 # automatically compiles and runs the java file
 function run()
 {
