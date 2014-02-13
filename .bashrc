@@ -169,6 +169,7 @@ function blur()
 {
     javac -cp "jai_core.jar:jai_codec.jar" *.java
     java -cp ".:jai_core.jar:jai_codec.jar" Blur $1 $2
+    move_bin
 }
 
 ### GIT ###
