@@ -126,7 +126,8 @@ function grade_stats(){
 }
 
 #login to either cs61b or cs70 account based on argument
-function login(){
+function login()
+{
     [[ -z "$1" ]] && echo "$0: missing argument"
     if [ "$1" == "cs61b" ]; then
         echo "logging into cs61b-acx"
@@ -149,12 +150,25 @@ function run()
     #runs the specified file
     java ${1%.*}
     echo "******* cleaning up **********"
+    move_bin
+}
+
+# moves java class files into a directory called bin
+# if dir does not exists, it is created
+function move_bin(){
     if [ ! -d "bin" ]; then
         mkdir bin
     fi
     mv_noconfirm *.class bin
     echo -e "\n"
+}
 
+#### CS 61B PROJECT 1 ####
+
+function blur()
+{
+    javac -cp "jai_core.jar:jai_codec.jar" *.java
+    java -cp ".:jai_core.jar:jai_codec.jar" Blur $1 $2
 }
 
 ### GIT ###
