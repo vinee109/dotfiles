@@ -172,6 +172,13 @@ function blur()
     move_bin
 }
 
+function sobel()
+{
+    javac -cp "jai_core.jar:jai_codec.jar" *.java
+    java -cp ".:jai_core.jar:jai_codec.jar" Sobel $1 $2
+    move_bin 
+}
+
 ### GIT ###
 
 function br()
