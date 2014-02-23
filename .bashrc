@@ -159,8 +159,7 @@ function move_bin(){
     if [ ! -d "bin" ]; then
         mkdir bin
     fi
-    mv_noconfirm *.class bin
-    echo -e "\n"
+    mv -f *.class bin
 }
 
 #### CS 61B PROJECT 1 ####
