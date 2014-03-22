@@ -149,7 +149,7 @@ function run()
     echo "******* running $1 *********"
     #runs the specified file
     java ${1%.*}
-    if ["$2 == -cleanup"]; then
+    if ["$2" == "-cleanup"]; then
         echo "******* cleaning up **********"
         move_bin
     fi
@@ -185,6 +185,10 @@ function sobel()
 function network(){
     javac -g */*.java
     java Network $1 $2
+}
+
+function test_pj2(){
+    run player/Tester.java
 }
 
 ### GIT ###
