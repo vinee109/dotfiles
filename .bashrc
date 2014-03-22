@@ -149,8 +149,10 @@ function run()
     echo "******* running $1 *********"
     #runs the specified file
     java ${1%.*}
-    echo "******* cleaning up **********"
-    move_bin
+    if ["$2 == -cleanup"]; then
+        echo "******* cleaning up **********"
+        move_bin
+    fi
 }
 
 # moves java class files into a directory called bin
@@ -176,6 +178,13 @@ function sobel()
     javac -cp "jai_core.jar:jai_codec.jar" *.java
     java -cp ".:jai_core.jar:jai_codec.jar" Sobel $1 $2
     move_bin 
+}
+
+#### CS 61B PROJECT 2 ####
+
+function network(){
+    javac -g */*.java
+    java Network $1 $2
 }
 
 ### GIT ###
