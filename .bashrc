@@ -23,7 +23,7 @@ if [ $? -eq 0 ]; then \
 fi ; \
 echo "'$purple'\$ '$white'")'
 
-export LSCOLORS=GxFxCxDxBxegedabagaced
+
 
 # Make bash check its window size after a process completes
 shopt -s checkwinsize
@@ -45,6 +45,7 @@ fi
 ASCRIPT=$HOME/Developer/Scripts
 export DOCPATH=$HOME/Developer/Java/docs
 export CLASSPATH=.:$HOME/Developer/Java/jars/*:$HOME/Developer/Java/gjdb/bin
+export LSCOLORS=GxFxCxDxBxegedabagaced
 
 ###########
 # Aliases #
@@ -77,8 +78,8 @@ set -o vi
 set -o allexport
 
 export EDITOR=vim
-SERVER_CS61B="cs61b-acx@star.cs.berkeley.edu"
-SERVER_CS70="cs70-jd@star.cs.berkeley.edu"
+SERVER_CS61B="cs61b-acx@torus.cs.berkeley.edu"
+SERVER_CS70="cs70-jd@torus.cs.berkeley.edu"
 
 function lx()
 {
@@ -105,6 +106,12 @@ function goto(){
     fi
     if [ "$1" == "footprintz" ]; then
         cd ~/desktop/projects/footprintz
+    fi
+    if [ "$1" == "scheduler" ]; then
+        cd ~/Desktop/Android\ Dev/workspace/Scheduler
+    fi
+    if [ "$1" == "punjit" ]; then
+        cd ~/Desktop/Android\ Dev/workspace/Punjit
     fi
 }
 
@@ -188,7 +195,8 @@ function network(){
 }
 
 function test_pj2(){
-    run player/Tester.java
+    javac */*.java
+    java player/Tester
 }
 
 ### GIT ###
