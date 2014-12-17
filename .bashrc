@@ -72,7 +72,7 @@ alias hiddenon="defaults write com.apple.Finder AppleShowAllFiles TRUE; killall 
 alias ipaddress="ifconfig | grep 'inet ' | grep -v 127.0.0.1 | tail -n 1 | sed 's/.*inet \([^ ]*\) .*/\1/'"
 alias lock="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
 alias thachi="osascript -e 'tell app \"System Events\" to sleep'"
-alias sublime="open -a \"Sublime Text 2\""
+alias sublime="open -a \"Sublime Text\""
 
 set -o vi
 set -o allexport
@@ -80,11 +80,14 @@ set -o allexport
 export EDITOR=vim
 SERVER_CS61B="cs61b-acx@torus.cs.berkeley.edu"
 SERVER_CS70="cs70-jd@torus.cs.berkeley.edu"
+SERVER_CS188="cs188-fy@torus.cs.berkeley.edu"
+SERVER_CS170="cs170-wj@torus.cs.berkeley.edu"
 
-function lx()
-{
-    file=$(basename "${1}")
-    pdflat "${file}" && open ${file%.tex}.pdf
+function update_bash(){
+    cp -r ~/.vim ~/desktop/projects/Bash-setup
+    cp .vimrc ~/desktop/projects/Bash-setup
+    cp .viminfo ~/desktop/projects/Bash-setup
+    cp .bashrc ~/desktop/projects/Bash-setup
 }
 
 #### BERKELEY CS CLASSES #####
@@ -98,8 +101,8 @@ function goto(){
     if [ "$1" == "cs70" ]; then
         cd ~/desktop/school/Spring_2014/CS70
     fi
-    if [ "$1" == "uconnect" ]; then
-        cd ~/desktop/projects/uconnect
+    if [ "$1" == "bash" ]; then
+        cd ~/desktop/projects/Bash-setup
     fi
     if [ "$1" == "projects" ]; then
         cd ~/desktop/projects
@@ -108,10 +111,19 @@ function goto(){
         cd ~/desktop/projects/footprintz
     fi
     if [ "$1" == "scheduler" ]; then
-        cd ~/Desktop/Android\ Dev/workspace/Scheduler
+        cd ~/Desktop/projects/Scheduler
     fi
-    if [ "$1" == "punjit" ]; then
-        cd ~/Desktop/Android\ Dev/workspace/Punjit
+    if [ "$1" == "school" ]; then
+        cd ~/Desktop/school
+    fi
+    if [ "$1" == "mcb" ]; then
+        cd ~/Desktop/school/Fall_2014/Mcb100A
+    fi
+    if [ "$1" == "170" ]; then
+        cd ~/Desktop/school/Fall_2014/CS170
+    fi
+    if [ "$1" == "188" ]; then
+        cd ~/Desktop/school/Fall_2014/CS188
     fi
 }
 
@@ -144,6 +156,15 @@ function login()
         echo "logging into cs70-jd"
         ssh $SERVER_CS70
     fi
+    if [ "$1" == "cs170" ]; then
+        echo "logging into cs170-wj"
+        ssh $SERVER_CS170
+    fi
+    if [ "$1" == "cs188" ]; then
+        echo "logging into cs188-fy"
+        ssh $SERVER_CS188
+    fi
+
 }
 
 # automatically compiles and runs the java file
