@@ -31,6 +31,7 @@ set lazyredraw
 set splitright
 set showtabline=2
 set tabpagemax=15
+set tw=80
 
 " COLORS
 colorscheme teal
