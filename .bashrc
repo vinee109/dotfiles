@@ -44,7 +44,7 @@ fi
 
 ASCRIPT=$HOME/Developer/Scripts
 export DOCPATH=$HOME/Developer/Java/docs
-export CLASSPATH=.:$HOME/Developer/Java/jars/*:$HOME/Developer/Java/gjdb/bin
+export CLASSPATH=.:$HOME/Developer/Java/jars/*:$HOME/Developer/Java/gjdb/bin:$HOME/Desktop/Projects/DataStructs/*
 export LSCOLORS=GxFxCxDxBxegedabagaced
 
 ###########
@@ -73,6 +73,7 @@ alias ipaddress="ifconfig | grep 'inet ' | grep -v 127.0.0.1 | tail -n 1 | sed '
 alias lock="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
 alias thachi="osascript -e 'tell app \"System Events\" to sleep'"
 alias sublime="open -a \"Sublime Text\""
+alias preview="open -a \"Preview\""
 
 set -o vi
 set -o allexport
@@ -88,6 +89,11 @@ function update_bash(){
     cp .vimrc ~/desktop/projects/Bash-setup
     cp .viminfo ~/desktop/projects/Bash-setup
     cp .bashrc ~/desktop/projects/Bash-setup
+}
+
+function latex(){
+	pdflatex --file-line-error --synctex=1 $1
+	preview ${1%.tex}.pdf
 }
 
 #### BERKELEY CS CLASSES #####
@@ -124,6 +130,18 @@ function goto(){
     fi
     if [ "$1" == "188" ]; then
         cd ~/Desktop/school/Fall_2014/CS188
+    fi
+    if [ "$1" == "174" ]; then
+        cd ~/Desktop/school/Spring_2015/CS174
+    fi
+    if [ "$1" == "189" ]; then
+        cd ~/Desktop/school/Spring_2015/CS189
+    fi
+    if [ "$1" == "102" ]; then
+        cd ~/Desktop/school/Spring_2015/MCB102
+    fi
+    if [ "$1" == "104" ]; then
+        cd ~/Desktop/school/Spring_2015/MCB104
     fi
 }
 

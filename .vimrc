@@ -152,3 +152,7 @@ endfunction
 au BufWrite /private/tmp/crontab.* set nowritebackup
 " Don't write backup file if vim is being called by "chpass"
 au BufWrite /private/etc/pw.* set nowritebackup
+
+" Press Space to turn off highlighting and clear any message already displayed."
+:nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
+
