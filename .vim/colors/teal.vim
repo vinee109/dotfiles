@@ -14,7 +14,7 @@ highlight Statement ctermfg=29
 highlight Type ctermfg=26
 highlight VertSplit cterm=none ctermfg=23
 highlight WildMenu ctermfg=black ctermbg=23
-highlight TabLineFill ctermfg=23
+highlight TabLineFill ctermfg=black
 highlight TabLine ctermfg=black ctermbg=23 cterm=none
 highlight TabLineSel ctermfg=white ctermbg=57 cterm=none
 highlight Title ctermfg=white ctermbg=none
