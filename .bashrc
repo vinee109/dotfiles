@@ -239,12 +239,25 @@ function test_pj2(){
 }
 
 ### GIT ###
+alias gps="git push"
+alias gpu="git pull"
+alias gs="git status"
+alias gl="git log"
+alias gc="git commit"
+alias gch="git checkout"
+alias gcl="git clone"
+alias ga="git add"
+alias gr="git rm --cached"
+alias gb="git branch"
+alias gd="git diff"
+alias gh="git help"
+alias gm="git merge"
 
 function br()
 {
     [[ -z "$1" ]] && echo "$0: missing argument" && exit 1
-    git branch --track "$1" master
-    git checkout "$1"
+    gb --track "$1" master
+    gc "$1"
 }
 
 function land()
