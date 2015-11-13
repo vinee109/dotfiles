@@ -73,7 +73,9 @@ alias ipaddress="ifconfig | grep 'inet ' | grep -v 127.0.0.1 | tail -n 1 | sed '
 alias lock="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
 alias thachi="osascript -e 'tell app \"System Events\" to sleep'"
 alias sublime="open -a \"Sublime Text\""
+alias subl="sublime"
 alias preview="open -a \"Preview\""
+alias l="latex"
 
 set -o vi
 set -o allexport
@@ -101,11 +103,14 @@ function latex(){
 # shortcut for automatically navigating to various directories
 function goto(){
     [[ -z "$1" ]] && echo "$0: missing argument"
+    if [ "$1" == "interview" ]; then
+        cd ~/desktop/interview
+    fi
     if [ "$1" == "cs61b" ]; then
-        cd ~/desktop/school/Spring_2014/CS61B
+        cd ~/desktop/school/Spring-2014/CS61B
     fi
     if [ "$1" == "cs70" ]; then
-        cd ~/desktop/school/Spring_2014/CS70
+        cd ~/desktop/school/Spring-2014/CS70
     fi
     if [ "$1" == "bash" ]; then
         cd ~/desktop/projects/Bash-setup
@@ -120,28 +125,37 @@ function goto(){
         cd ~/Desktop/projects/Scheduler
     fi
     if [ "$1" == "school" ]; then
-        cd ~/Desktop/school
+        cd ~/Desktop/school/Fall-2015
     fi
     if [ "$1" == "mcb" ]; then
-        cd ~/Desktop/school/Fall_2014/Mcb100A
+        cd ~/Desktop/school/Fall-2014/Mcb100A
     fi
     if [ "$1" == "170" ]; then
-        cd ~/Desktop/school/Fall_2014/CS170
+        cd ~/Desktop/school/Fall-2014/CS170
     fi
     if [ "$1" == "188" ]; then
-        cd ~/Desktop/school/Fall_2014/CS188
+        cd ~/Desktop/school/Fall-2014/CS188
     fi
     if [ "$1" == "174" ]; then
-        cd ~/Desktop/school/Spring_2015/CS174
+        cd ~/Desktop/school/Spring-2015/CS174
     fi
     if [ "$1" == "189" ]; then
-        cd ~/Desktop/school/Spring_2015/CS189
+        cd ~/Desktop/school/Spring-2015/CS189
     fi
     if [ "$1" == "102" ]; then
-        cd ~/Desktop/school/Spring_2015/MCB102
+        cd ~/Desktop/school/Spring-2015/MCB102
     fi
     if [ "$1" == "104" ]; then
-        cd ~/Desktop/school/Spring_2015/MCB104
+        cd ~/Desktop/school/Spring-2015/MCB104
+    fi
+    if [ "$1" == "168" ]; then
+        cd ~/Desktop/school/Fall-2015/CS168
+    fi
+    if [ "$1" == "176" ]; then
+        cd ~/Desktop/school/Fall-2015/CS176
+    fi
+    if [ "$1" == "160" ]; then
+        cd ~/Desktop/school/Fall-2015/MCB160
     fi
 }
 
@@ -252,12 +266,13 @@ alias gb="git branch"
 alias gd="git diff"
 alias gh="git help"
 alias gm="git merge"
+alias gstash="git stash"
 
 function br()
 {
     [[ -z "$1" ]] && echo "$0: missing argument" && exit 1
     gb --track "$1" master
-    gc "$1"
+    gch "$1"
 }
 
 function land()
@@ -276,3 +291,16 @@ function land()
 	echo "Cleaning up branch $BRANCH..."
 	git branch -d "$BRANCH"
 }
+
+### Google App Engine ###
+function deploy()
+{
+    appcfg.py --oauth2 -A $1 update $2
+}
+
+## CS 168 ##
+function create()
+{
+    dd if=/dev/zero of=$1 bs=$2 count=1
+}
+alias syncvm="scp *.py *.conf cs168@172.16.122.2:~/public/"
