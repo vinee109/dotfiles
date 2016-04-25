@@ -62,6 +62,7 @@ alias mv_noconfirm="yes | mv"
 alias p="python3"
 alias rm="rm -i"
 alias v="vim -O"
+alias python="python2"
 
 alias cleandesk="osascript $ASCRIPT/cleandesk.scpt"
 alias cdown="mv ~/Downloads/* ~/.Trash"
@@ -75,7 +76,7 @@ alias thachi="osascript -e 'tell app \"System Events\" to sleep'"
 alias sublime="open -a \"Sublime Text\""
 alias subl="sublime"
 alias preview="open -a \"Preview\""
-alias l="latex"
+alias atom="open -a \"Atom\""
 
 set -o vi
 set -o allexport
@@ -125,7 +126,7 @@ function goto(){
         cd ~/Desktop/projects/Scheduler
     fi
     if [ "$1" == "school" ]; then
-        cd ~/Desktop/school/Fall-2015
+        cd ~/Desktop/school/Spring-2016
     fi
     if [ "$1" == "mcb" ]; then
         cd ~/Desktop/school/Fall-2014/Mcb100A
@@ -156,6 +157,18 @@ function goto(){
     fi
     if [ "$1" == "160" ]; then
         cd ~/Desktop/school/Fall-2015/MCB160
+    fi
+    if [ "$1" == "186" ]; then
+        cd ~/Desktop/School/Spring-2016/CS186
+    fi
+    if [ "$1" == "16a" ]; then
+        cd ~/Desktop/School/Spring-2016/EE16A
+    fi
+    if [ "$1" == "161" ]; then
+        cd ~/Desktop/School/Spring-2016/MCB161
+    fi
+    if [ "$1" == "160l" ]; then
+        cd ~/Desktop/School/Spring-2016/MCB160L
     fi
 }
 
@@ -258,15 +271,20 @@ alias gpu="git pull"
 alias gs="git status"
 alias gl="git log"
 alias gc="git commit"
+alias gcm="git commit -m"
+alias gcam="git commit -a -m"
+alias gcamend="git commit --amend"
 alias gch="git checkout"
 alias gcl="git clone"
 alias ga="git add"
+alias gai="git add -i"
 alias gr="git rm --cached"
 alias gb="git branch"
 alias gd="git diff"
 alias gh="git help"
 alias gm="git merge"
 alias gstash="git stash"
+alias pull="git submodule update && git pull"
 
 function br()
 {
@@ -304,3 +322,42 @@ function create()
     dd if=/dev/zero of=$1 bs=$2 count=1
 }
 alias syncvm="scp *.py *.conf cs168@172.16.122.2:~/public/"
+
+
+### GradeTracker ###
+alias gt="javac GradeTracker.java; java GradeTracker"
+
+
+### CS 186 ###
+alias update="git pull course master"
+
+function grade()
+{
+    [[ -z "$1" ]] && echo "$0: missing argument" && exit 1
+    git push origin "master:ag/$1"
+}
+
+function submit()
+{
+    [[ -z "$1" ]] && echo "$0: missing argument" && exit 1
+    git push origin "master:release/$1"
+}
+
+function testhw5()
+{
+    scp part2test.py cs186:~/acz/hw5/
+    scp hw5_sol.py cs186:~/acz/hw5/
+    ssh cs186 "cd hw5; python part2test.py"
+}
+
+JUPYTERPORT=16078
+alias 186ipy="ssh -L $JUPYTERPORT:localhost:$JUPYTERPORT cs186"
+
+### EE16A ###
+function copyhw()
+{
+    ssh ee16a "mkdir ~/hw//hw$1"
+    scp hw$1.ipynb hw$1.pdf hw$1_grades.txt ee16a:~/hw/hw$1/
+    ssh ee16a
+}
+
