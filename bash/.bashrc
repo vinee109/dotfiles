@@ -58,6 +58,7 @@ export LSCOLORS=GxFxCxDxBxegedabagaced
 # Aliases #
 ###########
 alias ..="cd .."
+alias cdu="cd $UBER_HOME"
 alias cp="cp -i"
 alias df="df -H"
 alias gcc="gcc -Wall"
@@ -83,6 +84,7 @@ alias sublime="open -a \"Sublime Text\""
 alias subl="sublime"
 alias preview="open -a \"Preview\""
 alias atom="open -a \"Atom\""
+alias food="cd ~/Desktop/Food-Diary"
 
 #############
 # Utilities #
@@ -123,7 +125,6 @@ function move_bin(){
     fi
     mv -f *.class bin
 }
-
 
 #######
 # GIT #
