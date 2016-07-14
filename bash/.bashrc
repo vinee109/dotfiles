@@ -82,17 +82,6 @@ set -o vi
 set -o allexport
 
 export EDITOR=vim
-SERVER_CS61B="cs61b-acx@torus.cs.berkeley.edu"
-SERVER_CS70="cs70-jd@torus.cs.berkeley.edu"
-SERVER_CS188="cs188-fy@torus.cs.berkeley.edu"
-SERVER_CS170="cs170-wj@torus.cs.berkeley.edu"
-
-function update_bash(){
-    cp -r ~/.vim ~/desktop/projects/Bash-setup
-    cp .vimrc ~/desktop/projects/Bash-setup
-    cp .viminfo ~/desktop/projects/Bash-setup
-    cp .bashrc ~/desktop/projects/Bash-setup
-}
 
 function latex(){
 	pdflatex --file-line-error --synctex=1 $1
@@ -172,45 +161,6 @@ function goto(){
     fi
 }
 
-#checking grades
-function grades(){
-    echo -e "Grades for CS61B"
-    ssh ${SERVER_CS61B} "glookup"
-    echo -e "\nGrades for CS70"
-    ssh ${SERVER_CS70} "glookup"
-}
-
-# check grade ranks in cs61b and cs70
-function grade_stats(){
-    echo -e "Stats for CS61B"
-    ssh ${SERVER_CS61B} "glookup -s \"Total\""
-    echo -e "Stats for CS70"
-    ssh ${SERVER_CS70} "glookup -s \"Total\""
-
-}
-
-#login to either cs61b or cs70 account based on argument
-function login()
-{
-    [[ -z "$1" ]] && echo "$0: missing argument"
-    if [ "$1" == "cs61b" ]; then
-        echo "logging into cs61b-acx"
-        ssh $SERVER_CS61B
-    fi
-    if [ "$1" == "cs70" ]; then
-        echo "logging into cs70-jd"
-        ssh $SERVER_CS70
-    fi
-    if [ "$1" == "cs170" ]; then
-        echo "logging into cs170-wj"
-        ssh $SERVER_CS170
-    fi
-    if [ "$1" == "cs188" ]; then
-        echo "logging into cs188-fy"
-        ssh $SERVER_CS188
-    fi
-
-}
 
 # automatically compiles and runs the java file
 function run()
@@ -237,33 +187,6 @@ function move_bin(){
     mv -f *.class bin
 }
 
-#### CS 61B PROJECT 1 ####
-
-function blur()
-{
-    javac -cp "jai_core.jar:jai_codec.jar" *.java
-    java -cp ".:jai_core.jar:jai_codec.jar" Blur $1 $2
-    move_bin
-}
-
-function sobel()
-{
-    javac -cp "jai_core.jar:jai_codec.jar" *.java
-    java -cp ".:jai_core.jar:jai_codec.jar" Sobel $1 $2
-    move_bin 
-}
-
-#### CS 61B PROJECT 2 ####
-
-function network(){
-    javac -g */*.java
-    java Network $1 $2
-}
-
-function test_pj2(){
-    javac */*.java
-    java player/Tester
-}
 
 ### GIT ###
 alias gps="git push"
@@ -310,54 +233,4 @@ function land()
 	git branch -d "$BRANCH"
 }
 
-### Google App Engine ###
-function deploy()
-{
-    appcfg.py --oauth2 -A $1 update $2
-}
-
-## CS 168 ##
-function create()
-{
-    dd if=/dev/zero of=$1 bs=$2 count=1
-}
-alias syncvm="scp *.py *.conf cs168@172.16.122.2:~/public/"
-
-
-### GradeTracker ###
-alias gt="javac GradeTracker.java; java GradeTracker"
-
-
-### CS 186 ###
-alias update="git pull course master"
-
-function grade()
-{
-    [[ -z "$1" ]] && echo "$0: missing argument" && exit 1
-    git push origin "master:ag/$1"
-}
-
-function submit()
-{
-    [[ -z "$1" ]] && echo "$0: missing argument" && exit 1
-    git push origin "master:release/$1"
-}
-
-function testhw5()
-{
-    scp part2test.py cs186:~/acz/hw5/
-    scp hw5_sol.py cs186:~/acz/hw5/
-    ssh cs186 "cd hw5; python part2test.py"
-}
-
-JUPYTERPORT=16078
-alias 186ipy="ssh -L $JUPYTERPORT:localhost:$JUPYTERPORT cs186"
-
-### EE16A ###
-function copyhw()
-{
-    ssh ee16a "mkdir ~/hw//hw$1"
-    scp hw$1.ipynb hw$1.pdf hw$1_grades.txt ee16a:~/hw/hw$1/
-    ssh ee16a
-}
 
