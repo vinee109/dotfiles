@@ -34,7 +34,7 @@ set tabpagemax=15
 set tw=80
 
 " COLORS
-colorscheme teal
+colorscheme antares
 
 set laststatus=2
 set statusline=
@@ -120,6 +120,7 @@ nnoremap <silent> <leader>aw :call ScrollOther("left", "up")<CR>
 nnoremap <silent> <leader>as :call ScrollOther("left", "down")<CR>
 
 command Q execute "tabclose"
+command T :w | :!pdflatex %
 
 function ScrollOther(horiz, vert)
 	if a:horiz == "left"
