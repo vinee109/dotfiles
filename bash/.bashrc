@@ -1,3 +1,7 @@
+##############
+# Appearance #
+##############
+
 # System-wide .bashrc file for interactive bash(1) shells.
 if [ -z "$PS1" ]; then
    return
@@ -12,18 +16,20 @@ bred="\[\033[1;31m\]"
 
 #PS1="$cyan\t: $green\w \$ $white"
 
-export PS1="$cyan\t: $purple\w $white"'$(git rev-parse &>/dev/null; \
+export PS1="$cyan\t (\u@): $purple\w $white"'$(git rev-parse &>/dev/null; \
 if [ $? -eq 0 ]; then \
     echo -n "$(git diff --quiet ; \
     if [ $? -eq 0 ]; then \
-        echo "'$bgreen'($(git symbolic-ref --short -q HEAD))'$white'"; \
+        echo "'$bgreen'($(git rev-parse --abbrev-ref HEAD))'$white'"; \
     else \
-        echo "'$bred'{$(git symbolic-ref --short -q HEAD)}'$white'" ;\
+        echo "'$bred'{$(git rev-parse --abbrev-ref HEAD)}'$white'" ;\
     fi) " ; \
 fi ; \
-echo "'$purple'\$ '$white'")'
+echo "'$purple'\n\$ '$white'")'
 
-
+function title {
+    echo -ne "\033]0;"$*"\007"
+}
 
 # Make bash check its window size after a process completes
 shopt -s checkwinsize
@@ -47,10 +53,10 @@ export DOCPATH=$HOME/Developer/Java/docs
 export CLASSPATH=.:$HOME/Developer/Java/jars/*:$HOME/Developer/Java/gjdb/bin:$HOME/Desktop/Projects/DataStructs/*
 export LSCOLORS=GxFxCxDxBxegedabagaced
 
+
 ###########
 # Aliases #
 ###########
-
 alias ..="cd .."
 alias cp="cp -i"
 alias df="df -H"
@@ -78,6 +84,10 @@ alias subl="sublime"
 alias preview="open -a \"Preview\""
 alias atom="open -a \"Atom\""
 
+#############
+# Utilities #
+#############
+
 set -o vi
 set -o allexport
 
@@ -86,79 +96,6 @@ export EDITOR=vim
 function latex(){
 	pdflatex --file-line-error --synctex=1 $1
 	preview ${1%.tex}.pdf
-}
-
-#### BERKELEY CS CLASSES #####
-
-# shortcut for automatically navigating to various directories
-function goto(){
-    [[ -z "$1" ]] && echo "$0: missing argument"
-    if [ "$1" == "interview" ]; then
-        cd ~/desktop/interview
-    fi
-    if [ "$1" == "cs61b" ]; then
-        cd ~/desktop/school/Spring-2014/CS61B
-    fi
-    if [ "$1" == "cs70" ]; then
-        cd ~/desktop/school/Spring-2014/CS70
-    fi
-    if [ "$1" == "bash" ]; then
-        cd ~/desktop/projects/Bash-setup
-    fi
-    if [ "$1" == "projects" ]; then
-        cd ~/desktop/projects
-    fi
-    if [ "$1" == "footprintz" ]; then
-        cd ~/desktop/projects/footprintz
-    fi
-    if [ "$1" == "scheduler" ]; then
-        cd ~/Desktop/projects/Scheduler
-    fi
-    if [ "$1" == "school" ]; then
-        cd ~/Desktop/school/Spring-2016
-    fi
-    if [ "$1" == "mcb" ]; then
-        cd ~/Desktop/school/Fall-2014/Mcb100A
-    fi
-    if [ "$1" == "170" ]; then
-        cd ~/Desktop/school/Fall-2014/CS170
-    fi
-    if [ "$1" == "188" ]; then
-        cd ~/Desktop/school/Fall-2014/CS188
-    fi
-    if [ "$1" == "174" ]; then
-        cd ~/Desktop/school/Spring-2015/CS174
-    fi
-    if [ "$1" == "189" ]; then
-        cd ~/Desktop/school/Spring-2015/CS189
-    fi
-    if [ "$1" == "102" ]; then
-        cd ~/Desktop/school/Spring-2015/MCB102
-    fi
-    if [ "$1" == "104" ]; then
-        cd ~/Desktop/school/Spring-2015/MCB104
-    fi
-    if [ "$1" == "168" ]; then
-        cd ~/Desktop/school/Fall-2015/CS168
-    fi
-    if [ "$1" == "176" ]; then
-        cd ~/Desktop/school/Fall-2015/CS176
-    fi
-    if [ "$1" == "160" ]; then
-        cd ~/Desktop/school/Fall-2015/MCB160
-    fi
-    if [ "$1" == "186" ]; then
-        cd ~/Desktop/School/Spring-2016/CS186
-    fi
-    if [ "$1" == "16a" ]; then
-        cd ~/Desktop/School/Spring-2016/EE16A
-    fi
-    if [ "$1" == "161" ]; then
-        cd ~/Desktop/School/Spring-2016/MCB161
-    fi
-    if [ "$1" == "160l" ]; then
-        cd ~/Desktop/School/Spring-2016/MCB160L
-    fi
 }
 
 
@@ -188,7 +125,9 @@ function move_bin(){
 }
 
 
-### GIT ###
+#######
+# GIT #
+#######
 alias gps="git push"
 alias gpu="git pull"
 alias gs="git status"
@@ -208,6 +147,7 @@ alias gh="git help"
 alias gm="git merge"
 alias gstash="git stash"
 alias pull="git submodule update && git pull"
+alias undo="git reset HEAD~"
 
 function br()
 {
@@ -233,4 +173,12 @@ function land()
 	git branch -d "$BRANCH"
 }
 
+function amend()
+{
+    git add $@
+    git commit --amend
+}
 
+if [ -f ~/.git-completion.bash ]; then
+    . ~/.git-completion.bash
+fi
