@@ -1,6 +1,6 @@
-Bash-setup
+dotfiles
 ==========
 
-Bash setup, includes various helpful aliases, as well as functions that can be used in a bash shell
+Includes things for bash, tmux and vim
 
-credit to [Manish Raghavan](https://github.com/mraghavan) for originally creating this file with color config, git config, and many of the aliases.
+credit to [Manish Raghavan](https://github.com/mraghavan) for originally creating the bash and vim configs
