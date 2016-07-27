@@ -58,6 +58,7 @@ export LSCOLORS=GxFxCxDxBxegedabagaced
 # Aliases #
 ###########
 alias ..="cd .."
+alias cd="cdenv"
 alias cdu="cd $UBER_HOME"
 alias cp="cp -i"
 alias df="df -H"
@@ -124,6 +125,16 @@ function move_bin(){
         mkdir bin
     fi
     mv -f *.class bin
+}
+
+# Acts just like cd but if env/bin/activate exists (python virtual environment)
+# then it will automatically be activated
+function cdenv(){
+    'cd' $1
+    if [ -e "env/bin/activate" ]
+    then
+        source env/bin/activate
+    fi
 }
 
 #######
