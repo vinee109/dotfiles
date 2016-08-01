@@ -191,6 +191,18 @@ function amend()
     git commit --amend
 }
 
+function rebase()
+{
+    BRANCH=$(git rev-parse --abbrev-ref HEAD)
+    echo "Switching to branch master..."
+    git checkout master 2>/dev/null || { git checkout master; return 1; }
+    echo "Pulling remote changes to master..."
+    git pull || return 2
+    echo "Rebasing branch $BRANCH"
+    git checkout $BRANCH
+    git rebase master
+}
+
 if [ -f ~/.git-completion.bash ]; then
     . ~/.git-completion.bash
 fi
