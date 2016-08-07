@@ -86,6 +86,9 @@ alias subl="sublime"
 alias preview="open -a \"Preview\""
 alias atom="open -a \"Atom\""
 alias food="cd ~/Desktop/Food-Diary"
+# Arc aliases
+alias ad="arc diff"
+alias ado="arc diff --only"
 
 #############
 # Utilities #
@@ -155,6 +158,7 @@ alias gai="git add -i"
 alias gr="git rm --cached"
 alias gb="git branch"
 alias gd="git diff"
+alias gds="git diff --staged"
 alias gh="git help"
 alias gm="git merge"
 alias gstash="git stash"
