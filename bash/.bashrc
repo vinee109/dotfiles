@@ -84,11 +84,12 @@ alias thachi="osascript -e 'tell app \"System Events\" to sleep'"
 alias sublime="open -a \"Sublime Text\""
 alias subl="sublime"
 alias preview="open -a \"Preview\""
-alias atom="open -a \"Atom\""
+# alias atom="open -a \"Atom\""
 alias food="cd ~/Desktop/Food-Diary"
 # Arc aliases
 alias ad="arc diff"
 alias ado="arc diff --only"
+alias al="arc land"
 
 #############
 # Utilities #
@@ -146,7 +147,7 @@ function cdenv(){
 alias gps="git push"
 alias gpu="git pull"
 alias gs="git status"
-alias gl="git log"
+alias gl="git log --pretty=format:'%C(yellow)%h%Creset %Cgreen(%cr) %C(bold blue)%d%Creset %C(bold magenta)(%an)%Creset %s %Creset' --abbrev-commit"
 alias gc="git commit"
 alias gcm="git commit -m"
 alias gcam="git commit -a -m"

@@ -1,0 +1,31 @@
+[user]
+	name = Vineet Jain
+	email = jain.vinee@gmail.com
+[branch]
+	autosetuprebase = always
+[rerere]
+	enabled = true
+[url "ssh://gitolite@code.uber.internal/"]
+	insteadOf = git://code.uber.internal/
+[url "ssh://git@github.com/uber/"]
+	insteadOf = https://github.com/uber/
+[url "ssh://gitolite@code.uber.internal:2222/"]
+	insteadOf = https://code.uber.internal/
+[credential]
+	helper = store
+[color]
+    ui = auto
+    status = auto
+    branch = auto
+
+[color "status"]
+    added = green
+    changed = yellow
+    deleted = red
+    untracked = cyan
+
+[diff]
+    tool = vimdiff
+
+[log]
+    date = relative
