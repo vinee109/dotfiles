@@ -89,6 +89,7 @@ alias food="cd ~/Desktop/Food-Diary"
 # Arc aliases
 alias ad="arc diff"
 alias ado="arc diff --only"
+alias adu="arc diff --update"
 alias al="arc land"
 
 #############
