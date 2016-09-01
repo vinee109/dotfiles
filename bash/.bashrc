@@ -91,6 +91,8 @@ alias ad="arc diff"
 alias ado="arc diff --only"
 alias adu="arc diff --update"
 alias al="arc land"
+alias alt="arc lint"
+alias adnunl="arc diff --nounit --nolint"
 
 #############
 # Utilities #
@@ -209,7 +211,16 @@ function rebase()
     git rebase master
 }
 
+function pushbranch()
+{
+    BRANCH=$(git rev-parse --abbrev-ref HEAD)
+    git push -f origin $BRANCH
+}
+
 if [ -f ~/.git-completion.bash ]; then
     . ~/.git-completion.bash
+    __git_complete gch _git_checkout
+    __git_complete gc _git_commit
+    __git_complete ga _git_add
 fi
 
