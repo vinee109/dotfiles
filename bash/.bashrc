@@ -9,6 +9,7 @@ fi
 
 green="\[\033[0;32m\]"
 cyan="\[\033[0;36m\]"
+blue="\[\033[0;94m\]"
 purple="\[\033[0;35m\]"
 white="\[\033[00m\]"
 bgreen="\[\033[1;32m\]"
@@ -16,7 +17,7 @@ bred="\[\033[1;31m\]"
 
 #PS1="$cyan\t: $green\w \$ $white"
 
-export PS1="$cyan\t (\u@): $purple\w $white"'$(git rev-parse &>/dev/null; \
+export PS1="$cyan\t $blue(\u@\H) $purple\w $white"'$(git rev-parse &>/dev/null; \
 if [ $? -eq 0 ]; then \
     echo -n "$(git diff --quiet ; \
     if [ $? -eq 0 ]; then \
@@ -156,6 +157,7 @@ alias gcm="git commit -m"
 alias gcam="git commit -a -m"
 alias gcamend="git commit --amend"
 alias gch="git checkout"
+alias gchm="git checkout master"
 alias gcl="git clone"
 alias ga="git add"
 alias gai="git add -i"
