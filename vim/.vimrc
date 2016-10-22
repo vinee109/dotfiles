@@ -1,5 +1,8 @@
 " /usr/share/vimrc
 " Configuration file for vim
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
 set fileformat=mac
 set modelines=0		" CVE-2007-2438
 
@@ -158,3 +161,30 @@ au BufWrite /private/etc/pw.* set nowritebackup
 " Press Space to turn off highlighting and clear any message already displayed."
 :nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
+" Commenting blocks of code.
+autocmd FileType c,cpp,java,scala let b:comment_leader = '// '
+autocmd FileType sh,ruby,python   let b:comment_leader = '# '
+autocmd FileType conf,fstab       let b:comment_leader = '# '
+autocmd FileType tex              let b:comment_leader = '% '
+autocmd FileType mail             let b:comment_leader = '> '
+autocmd FileType vim              let b:comment_leader = '" '
+noremap <silent> cc :<C-B>silent <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:nohlsearch<CR>
+noremap <silent> cu :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:nohlsearch<CR>
+
+"""""""" Plugins
+call plug#begin('~/.vim/plugged')
+
+" NERDTree
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+
+" NERDCommenter
+Plug 'scrooloose/nerdcommenter'
+
+" Airline
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+" Airblade - Git Gutter
+Plug 'https://github.com/airblade/vim-gitgutter.git'
+
+call plug#end()
