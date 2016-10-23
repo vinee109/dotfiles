@@ -1,18 +1,16 @@
 [user]
 	name = Vineet Jain
 	email = jain.vinee@gmail.com
+
 [branch]
 	autosetuprebase = always
+
 [rerere]
 	enabled = true
-[url "ssh://gitolite@code.uber.internal/"]
-	insteadOf = git://code.uber.internal/
-[url "ssh://git@github.com/uber/"]
-	insteadOf = https://github.com/uber/
-[url "ssh://gitolite@code.uber.internal:2222/"]
-	insteadOf = https://code.uber.internal/
+
 [credential]
 	helper = store
+
 [color]
     ui = auto
     status = auto
@@ -29,3 +27,6 @@
 
 [log]
     date = relative
+
+[alias]
+    graph = log --graph --full-history --all --pretty=format:'%C(yellow)%h%Creset %Cgreen(%cr) %C(bold blue)%d%Creset %C(bold magenta)(%an)%Creset %s %Creset' --abbrev-commit
