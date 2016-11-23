@@ -217,7 +217,7 @@ function rebase()
 function pushbranch()
 {
     BRANCH=$(git rev-parse --abbrev-ref HEAD)
-    git push -f origin $BRANCH
+    git push origin $BRANCH
 }
 
 if [ -f ~/.git-completion.bash ]; then
