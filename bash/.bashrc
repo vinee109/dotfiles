@@ -169,7 +169,7 @@ function move_bin(){
 # Acts just like cd but if env/bin/activate exists (python virtual environment)
 # then it will automatically be activated
 function cdenv(){
-    'cd' $1
+    'cd' $@
     if [ -e "env/bin/activate" ]
     then
         source env/bin/activate
