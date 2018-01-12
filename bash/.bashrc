@@ -124,6 +124,22 @@ function latex(){
 	preview ${1%.tex}.pdf
 }
 
+# **************************************************************
+#
+# Converts a Quicktime .mov file to a .gif with the same name
+#
+# Example Usages:
+#    togif file.mov
+#
+# **************************************************************
+
+function togif() {
+    [[ -z "$1" ]] && echo "$0: missing argument"
+    SIZE=$(ffprobe -v quiet -print_format json -show_streams $1 | jq '.streams[0] | "\(.width)x\(.height)"')
+    ffmpeg -i $1 -s $SIZE -pix_fmt rgb8 -r 10 -f gif - | gifsicle --optimize=3 --delay=3 > ${1%.*}.gif
+}
+
+
 
 # automatically compiles and runs the java file
 function run()
