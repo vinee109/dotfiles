@@ -77,7 +77,6 @@ function title {
 # ================================================================================
 alias ..="cd .."
 alias cd="cdenv"
-alias cdu="cd $UBER_HOME"
 alias cp="cp -i"
 alias df="df -H"
 alias gcc="gcc -Wall"
