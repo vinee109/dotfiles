@@ -189,6 +189,7 @@ alias ga="git add"
 alias gai="git add -i"
 alias gap="git add -p"
 alias gb="git branch"
+alias gbm="git branch -m"
 alias gc="git commit"
 alias gcam="git commit -a -m"
 alias gcamend="git commit --amend"
@@ -200,13 +201,18 @@ alias gcm="git commit -m"
 alias gd="git diff"
 alias gds="git diff --staged"
 alias gh="git help"
+alias ghash="git rev-parse"
 alias gg="git graph"
 alias gl="git log --pretty=format:'%C(yellow)%h%Creset %Cgreen(%cr) %C(bold blue)%d%Creset %C(bold magenta)(%an)%Creset %s %Creset' --abbrev-commit"
 alias gm="git merge"
 alias gps="git push"
 alias gpu="git pull"
 alias gr="git rm --cached"
+alias gri="git rebase -i"
+alias grim="git rebase -i master"
+alias grc="git rebase --continue"
 alias gs="git status"
+alias GS="gs"  # common typo
 alias gsp="git stash pop"
 alias gst="git stash"
 alias pull="git submodule update && git pull"
@@ -251,8 +257,10 @@ function rebase()
     git pull || return 2
     echo "Rebasing branch $BRANCH"
     git checkout $BRANCH
-    git rebase master
-    fab test
+    git rebase -i master
+    if [ -f fabfile.py ]; then
+        fab test
+    fi
 }
 
 function revert()
