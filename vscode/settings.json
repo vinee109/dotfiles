@@ -1,0 +1,11 @@
+{
+    "editor.fontSize": 10,
+    "editor.minimap.enabled": "false",
+    "workbench.colorTheme": "Sublime Material Theme - Dark",
+    "workbench.editor.enablePreviewFromQuickOpen": false,
+    "gitlens.advanced.messages": {
+        "suppressShowKeyBindingsNotice": true
+    },
+    "workbench.statusBar.visible": true,
+    "workbench.startupEditor": "newUntitledFile"
+}
