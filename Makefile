@@ -1,3 +1,5 @@
+include sync.mk
+
 .PHONY: vscode
 vscode:
 	bash vscode/install.sh
