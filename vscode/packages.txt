@@ -1,8 +1,11 @@
 alefragnani.project-manager
+cduruk.thrift
 codezombiech.gitignore
+dbaeumer.vscode-eslint
 donjayamanne.git-extension-pack
 donjayamanne.githistory
 eamodio.gitlens
 jprestidge.theme-material-theme
 lukehoban.Go
+ms-python.python
 ziyasal.vscode-open-in-github
