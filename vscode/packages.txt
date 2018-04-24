@@ -1,5 +1,6 @@
 alefragnani.project-manager
 cduruk.thrift
+christian-kohler.path-intellisense
 codezombiech.gitignore
 dbaeumer.vscode-eslint
 donjayamanne.git-extension-pack
@@ -8,4 +9,5 @@ eamodio.gitlens
 jprestidge.theme-material-theme
 lukehoban.Go
 ms-python.python
+sysoev.language-stylus
 ziyasal.vscode-open-in-github
