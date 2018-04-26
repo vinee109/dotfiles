@@ -2,7 +2,9 @@
     "editor.fontSize": 10,
     "editor.minimap.enabled": false,
     "editor.codeLens": false,
+    "files.trimTrailingWhitespace": true,
     "workbench.colorTheme": "Sublime Material Theme - Dark",
+    "workbench.editor.enablePreview": false,
     "workbench.editor.enablePreviewFromQuickOpen": false,
     "gitlens.advanced.messages": {
         "suppressShowKeyBindingsNotice": true
@@ -11,6 +13,8 @@
         "statusBar.background" : "#1A1A1A",
         "statusBar.noFolderBackground" : "#212121",
     },
+    "workbench.statusBar.feedback.visible": false,
     "workbench.statusBar.visible": true,
-    "workbench.startupEditor": "newUntitledFile"
+    "workbench.startupEditor": "newUntitledFile",
+    "gitlens.statusBar.enabled": false
 }

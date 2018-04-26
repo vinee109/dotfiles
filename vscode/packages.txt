@@ -9,5 +9,6 @@ eamodio.gitlens
 jprestidge.theme-material-theme
 lukehoban.Go
 ms-python.python
+shardulm94.trailing-spaces
 sysoev.language-stylus
 ziyasal.vscode-open-in-github
