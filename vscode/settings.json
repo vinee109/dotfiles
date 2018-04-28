@@ -16,5 +16,8 @@
     "workbench.statusBar.feedback.visible": false,
     "workbench.statusBar.visible": true,
     "workbench.startupEditor": "newUntitledFile",
-    "gitlens.statusBar.enabled": false
+    "gitlens.statusBar.enabled": false,
+    "[python]": {
+        "editor.rulers": [100]
+    }
 }
