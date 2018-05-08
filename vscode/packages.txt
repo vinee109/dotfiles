@@ -7,7 +7,7 @@ donjayamanne.git-extension-pack
 donjayamanne.githistory
 eamodio.gitlens
 jprestidge.theme-material-theme
-lukehoban.Go
+ms-vscode.Go
 ms-python.python
 shardulm94.trailing-spaces
 sysoev.language-stylus
