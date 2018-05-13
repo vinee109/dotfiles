@@ -20,6 +20,7 @@
         "suppressShowKeyBindingsNotice": true
     },
     "workbench.colorCustomizations": {
+        "editorCursor.foreground": "#DEDEDE",
         "statusBar.background" : "#1A1A1A",
         "statusBar.noFolderBackground" : "#212121",
     },
@@ -34,5 +35,6 @@
         "editor.tabSize": 2,
         "editor.rulers": [100]
     },
-    "editor.scrollBeyondLastLine": false
+    "editor.scrollBeyondLastLine": false,
+    "editor.cursorStyle": "line"
 }
