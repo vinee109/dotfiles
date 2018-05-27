@@ -36,5 +36,8 @@
         "editor.rulers": [100]
     },
     "editor.scrollBeyondLastLine": false,
-    "editor.cursorStyle": "line"
+    "editor.cursorStyle": "line",
+    "python.linting.flake8Enabled": true,
+    "python.linting.pylintEnabled": false,
+    "gitlens.historyExplorer.enabled": true
 }
