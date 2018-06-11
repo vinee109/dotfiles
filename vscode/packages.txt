@@ -6,6 +6,7 @@ dbaeumer.vscode-eslint
 donjayamanne.git-extension-pack
 donjayamanne.githistory
 eamodio.gitlens
+espresso3389.genuuid
 jprestidge.theme-material-theme
 ms-vscode.Go
 ms-python.python
