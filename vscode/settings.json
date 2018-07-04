@@ -9,14 +9,17 @@
         "**/CVS": true,
         "**/.DS_Store": true,
         "**/*.pyc": true,
-        "**/node_modules": true
+        "**/node_modules": true,
+        "**/go-build": true,
+        "**/.tmp": true,
     },
     "files.insertFinalNewline": true,
     "files.trimTrailingWhitespace": true,
     "workbench.colorTheme": "Sublime Material Theme - Dark",
-    "workbench.editor.enablePreview": false,
-    "workbench.editor.enablePreviewFromQuickOpen": false,
+    "workbench.editor.enablePreview": true,
+    "workbench.editor.enablePreviewFromQuickOpen": true,
     "gitlens.advanced.messages": {
+        "suppressCommitNotFoundWarning": true,
         "suppressShowKeyBindingsNotice": true
     },
     "workbench.colorCustomizations": {
@@ -39,5 +42,7 @@
     "editor.cursorStyle": "line",
     "python.linting.flake8Enabled": true,
     "python.linting.pylintEnabled": false,
-    "gitlens.historyExplorer.enabled": true
+    "gitlens.historyExplorer.enabled": true,
+    "go.formatTool": "gofmt",
+    "go.formatOnSave": true
 }

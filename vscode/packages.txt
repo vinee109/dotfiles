@@ -9,6 +9,7 @@ eamodio.gitlens
 espresso3389.genuuid
 jprestidge.theme-material-theme
 ms-vscode.Go
+mohsen1.prettify-json
 ms-python.python
 shardulm94.trailing-spaces
 sysoev.language-stylus
