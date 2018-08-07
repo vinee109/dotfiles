@@ -16,8 +16,8 @@
     "files.insertFinalNewline": true,
     "files.trimTrailingWhitespace": true,
     "workbench.colorTheme": "Sublime Material Theme - Dark",
-    "workbench.editor.enablePreview": true,
-    "workbench.editor.enablePreviewFromQuickOpen": true,
+    "workbench.editor.enablePreview": false,
+    "workbench.editor.enablePreviewFromQuickOpen": false,
     "gitlens.advanced.messages": {
         "suppressCommitNotFoundWarning": true,
         "suppressShowKeyBindingsNotice": true
@@ -44,5 +44,7 @@
     "python.linting.pylintEnabled": false,
     "gitlens.historyExplorer.enabled": true,
     "go.formatTool": "gofmt",
-    "go.formatOnSave": true
+    "go.formatOnSave": true,
+    "go.docsTool": "gogetdoc",
+    "window.zoomLevel": 0
 }

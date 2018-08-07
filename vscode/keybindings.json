@@ -9,14 +9,6 @@
         "command": "-workbench.action.toggleSidebarVisibility"
     },
     {
-        "key": "cmd+d",
-        "command": "workbench.action.splitEditor"
-    },
-    {
-        "key": "cmd+\\",
-        "command": "-workbench.action.splitEditor"
-    },
-    {
         "key": "cmd+i",
         "command": "workbench.action.terminal.toggleTerminal"
     },
