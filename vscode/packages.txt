@@ -1,4 +1,5 @@
 alefragnani.project-manager
+canadaduane.notes
 cduruk.thrift
 christian-kohler.path-intellisense
 codezombiech.gitignore
@@ -6,11 +7,14 @@ dbaeumer.vscode-eslint
 donjayamanne.git-extension-pack
 donjayamanne.githistory
 eamodio.gitlens
+esbenp.prettier-vscode
 espresso3389.genuuid
+GrapeCity.gc-excelviewer
 jprestidge.theme-material-theme
 ms-vscode.Go
 mohsen1.prettify-json
 ms-python.python
+patricklee.vsnotes
 shardulm94.trailing-spaces
 sysoev.language-stylus
 ziyasal.vscode-open-in-github

@@ -32,7 +32,7 @@
     "workbench.startupEditor": "newUntitledFile",
     "gitlens.statusBar.enabled": false,
     "[python]": {
-        "editor.rulers": [100]
+        "editor.rulers": [80]
     },
     "[javascript]": {
         "editor.tabSize": 2,
@@ -46,5 +46,10 @@
     "go.formatTool": "gofmt",
     "go.formatOnSave": true,
     "go.docsTool": "gogetdoc",
-    "window.zoomLevel": 0
+    "window.zoomLevel": 0,
+    "prettier.bracketSpacing": false,
+    "prettier.printWidth": 100,
+    "prettier.singleQuote": true,
+    "breadcrumbs.enabled": true,
+    "vsnotes.defaultNotePath": "/Users/vineet/Desktop/notes"
 }
