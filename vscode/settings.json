@@ -1,7 +1,7 @@
 {
     "editor.fontSize": 10,
     "editor.minimap.enabled": false,
-    "editor.codeLens": false,
+    "files.autoSave": "onFocusChange",
     "files.exclude": {
         "**/.git": true,
         "**/.svn": true,
@@ -26,6 +26,7 @@
         "editorCursor.foreground": "#DEDEDE",
         "statusBar.background" : "#1A1A1A",
         "statusBar.noFolderBackground" : "#212121",
+        "editor.background": "#161616"
     },
     "workbench.statusBar.feedback.visible": false,
     "workbench.statusBar.visible": true,
@@ -33,10 +34,6 @@
     "gitlens.statusBar.enabled": false,
     "[python]": {
         "editor.rulers": [80]
-    },
-    "[javascript]": {
-        "editor.tabSize": 2,
-        "editor.rulers": [100]
     },
     "editor.scrollBeyondLastLine": false,
     "editor.cursorStyle": "line",
@@ -48,8 +45,13 @@
     "go.docsTool": "gogetdoc",
     "window.zoomLevel": 0,
     "prettier.bracketSpacing": false,
-    "prettier.printWidth": 100,
     "prettier.singleQuote": true,
     "breadcrumbs.enabled": true,
-    "vsnotes.defaultNotePath": "/Users/vineet/Desktop/notes"
+    "vsnotes.defaultNotePath": "/Users/vineet/Desktop/notes",
+    "prettier.trailingComma": "all",
+    "prettier.jsxBracketSameLine": true,
+    "eslint.run": "onSave",
+    "eslint.provideLintTask": true,
+    "editor.suggest.localityBonus": true,
+    "editor.codeLens": false,
 }

@@ -1,6 +1,7 @@
 alefragnani.project-manager
 canadaduane.notes
 cduruk.thrift
+christian-kohler.npm-intellisense
 christian-kohler.path-intellisense
 codezombiech.gitignore
 dbaeumer.vscode-eslint
