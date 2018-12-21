@@ -87,6 +87,8 @@ alias rm="rm -i"
 alias v="vim -O"
 alias python="python2"
 
+# Aliases for automating manual things
+
 alias cdown="mv ~/Downloads/* ~/.Trash"
 alias check="ping -o www.google.com"
 alias diskspace="du | sort -n -r | more"
@@ -94,7 +96,7 @@ alias ipaddress="ifconfig | grep 'inet ' | grep -v 127.0.0.1 | tail -n 1 | sed '
 alias sublime="open -a \"Sublime Text\""
 alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
 alias preview="open -a \"Preview\""
-
+alias rmsc="find ~/Desktop -name \"Screen Shot*.png\" -delete"
 
 # ================================================================================
 #
@@ -137,10 +139,22 @@ function togif() {
     [[ -z "$1" ]] && echo "$0: missing argument"
     SIZE=$(ffprobe -v quiet -print_format json -show_streams $1 | jq '.streams[0] | "\(.width)x\(.height)"')
     SIZE=$(sed -e 's/^"//' -e 's/"$//' <<< $SIZE)  # Remove leading and trailing quotes
-    ffmpeg -i $1 -s $SIZE -pix_fmt rgb24 -r 10 -f gif - | gifsicle --optimize=3 --delay=3 > ${1%.*}.gif
+    ffmpeg -i $1 -s $SIZE -pix_fmt rgb24 -r 5 -f gif - | gifsicle --optimize=3 --delay=40 > ${1%.*}.gif
 }
 
+# **************************************************************
+#
+# Converts a Quicktime .mov file to a .mp4 with the same name
+#
+# Example Usages:
+#    tomp4 file.mov
+#
+# **************************************************************
 
+function tomp4() {
+    [[ -z "$1" ]] && echo "$0: missing argument"
+    ffmpeg -i $1 -vcodec h264 -acodec aac -strict -2 ${1%.*}.mp4
+}
 
 # automatically compiles and runs the java file
 function run()
@@ -204,7 +218,7 @@ alias gds="git diff --staged"
 alias gh="git help"
 alias ghash="git rev-parse"
 alias gg="git graph"
-alias gl="git log --pretty=format:'%C(yellow)%h%Creset %Cgreen(%cr) %C(bold blue)%d%Creset %C(bold magenta)(%an)%Creset %s %Creset' --abbrev-commit"
+alias gl="git log --pretty=format:'%C(yellow)%<(10)%h %Cgreen%<(14)%cr %C(bold magenta)%<(24)%aE %C(bold blue)%d %Creset %s' --abbrev-commit"
 alias gm="git merge"
 alias gps="git push"
 alias gpu="git pull"
