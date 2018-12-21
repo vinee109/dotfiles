@@ -10,3 +10,6 @@ credit to [Manish Raghavan](https://github.com/mraghavan) for originally creatin
 ```
 mv spectacle/shortcuts.json ~/Library/Application\ Support/Spectacle/Shortcuts.json
 ```
+
+# Iterm
+Use Preferences > General > Load Preferences from folder
