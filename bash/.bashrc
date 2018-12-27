@@ -84,11 +84,10 @@ alias ll="ls -l"
 alias ls="ls -AFG"
 alias mv="mv -i"
 alias rm="rm -i"
-alias v="vim -O"
+alias vim="nvim"
 alias python="python2"
 
 # Aliases for automating manual things
-
 alias cdown="mv ~/Downloads/* ~/.Trash"
 alias check="ping -o www.google.com"
 alias diskspace="du | sort -n -r | more"
@@ -109,7 +108,7 @@ alias rmsc="find ~/Desktop -name \"Screen Shot*.png\" -delete"
 set -o vi
 set -o allexport
 
-export EDITOR=vim
+export EDITOR=nvim
 
 # **************************************************************
 #
