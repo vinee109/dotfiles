@@ -1,0 +1,64 @@
+"""""""""""" System Settings
+filetype plugin on
+
+
+"""""""""""" Color
+" Enable true colors - taken from setup in https://github.com/kaicataldo/material.vim
+if (has("nvim"))
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+endif
+
+if (has("termguicolors"))
+  set termguicolors
+endif
+
+" Set up color theme
+set background=dark
+colorscheme material
+let g:material_theme_style = 'dark'
+let g:airline_theme = 'material'
+
+"""""""""""" Editor
+syntax on
+set number					" Show line numbers
+set autoindent					" Enable auto indenting
+
+" Enable folding
+set foldmethod=indent
+set foldlevel=99
+
+
+"""""""""""" Plugins
+call plug#begin('~/.vim/plugged')
+
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-syntastic/syntastic'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'kaicataldo/material.vim'
+
+call plug#end()
+
+
+"""""""""""" Mappings
+" Swap directions of j and k movement keys
+" j - moves cursor up one line
+" k - moves cursor down one line
+nnoremap j k
+nnoremap k j
+
+
+"""""""""""" Split Screen
+set splitright
+set splitbelow
+
+" ctrl+[hjkl] navigate to different split panes
+noremap <C-h> <C-w>h
+noremap <C-l> <C-w>l
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+
+
+"""""""""""" Ctrl P
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+

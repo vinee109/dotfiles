@@ -1,1 +1,5 @@
 .DS_Store
+
+# vim
+**/.netrwhist
+**/.vim/plugged
