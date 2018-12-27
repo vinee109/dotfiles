@@ -18,6 +18,7 @@ colorscheme material
 let g:material_theme_style = 'dark'
 let g:airline_theme = 'material'
 
+
 """""""""""" Editor
 syntax on
 set number					" Show line numbers
@@ -27,15 +28,18 @@ set autoindent					" Enable auto indenting
 set foldmethod=indent
 set foldlevel=99
 
+" Remove trailing whitespace on save
+autocmd BufWritePre * :%s/\s\+$//e
+
 
 """""""""""" Plugins
 call plug#begin('~/.vim/plugged')
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'vim-syntastic/syntastic'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'kaicataldo/material.vim'
+Plug 'w0rp/ale'
 
 call plug#end()
 
@@ -60,5 +64,6 @@ noremap <C-k> <C-w>k
 
 
 """""""""""" Ctrl P
+" Exclude files in .gitignore from search results
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 

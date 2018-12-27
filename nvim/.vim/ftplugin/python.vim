@@ -8,3 +8,6 @@ set softtabstop=4
 set colorcolumn=81
 " Enable syntax highlighting
 let python_highlight_all=1
+
+let g:ale_linters_explicit = 1
+let b:ale_linters = ['flake8']
