@@ -1,3 +1,7 @@
+" Vim Filetype Plugin File
+" Language: python
+" Extensions: *.py
+
 """""""""""" Tab & Spacing
 set tabstop=4
 set expandtab
