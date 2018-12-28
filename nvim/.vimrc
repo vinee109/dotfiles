@@ -2,7 +2,7 @@
 filetype plugin on
 
 
-"""""""""""" Color
+"""""""""""" Appearance (Color, Cursor, etc.)
 " Enable true colors - taken from setup in https://github.com/kaicataldo/material.vim
 if (has("nvim"))
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
@@ -17,6 +17,8 @@ set background=dark
 colorscheme material
 let g:material_theme_style = 'dark'
 let g:airline_theme = 'material'
+
+set cursorline					" Highlight the current line
 
 
 """""""""""" Editor
