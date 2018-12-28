@@ -1,6 +1,7 @@
 """""""""""" System Settings
 filetype plugin on
 set updatetime=100
+let g:python3_host_prog = '/usr/local/bin/python3'
 
 
 """""""""""" Appearance (Color, Cursor, etc.)
@@ -39,6 +40,7 @@ autocmd BufWritePre * :%s/\s\+$//e
 call plug#begin('~/.vim/plugged')
 
 Plug 'airblade/vim-gitgutter'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -71,3 +73,6 @@ noremap <C-k> <C-w>k
 " Exclude files in .gitignore from search results
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
+
+"""""""""""" Deoplete
+let g:deoplete#enable_at_startup = 1
