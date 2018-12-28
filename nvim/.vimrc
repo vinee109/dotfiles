@@ -1,5 +1,6 @@
 """""""""""" System Settings
 filetype plugin on
+set updatetime=100
 
 
 """""""""""" Appearance (Color, Cursor, etc.)
@@ -37,6 +38,7 @@ autocmd BufWritePre * :%s/\s\+$//e
 """""""""""" Plugins
 call plug#begin('~/.vim/plugged')
 
+Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ctrlpvim/ctrlp.vim'
