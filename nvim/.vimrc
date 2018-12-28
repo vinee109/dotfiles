@@ -4,6 +4,13 @@ set updatetime=100
 let g:python3_host_prog = '/usr/local/bin/python3'
 
 
+" By default use tabwidth = 2 spaces
+set tabstop=2
+set expandtab
+set shiftwidth=2
+set softtabstop=2
+
+
 """""""""""" Appearance (Color, Cursor, etc.)
 " Enable true colors - taken from setup in https://github.com/kaicataldo/material.vim
 if (has("nvim"))
@@ -45,6 +52,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'kaicataldo/material.vim'
+Plug 'Shougo/neosnippet.vim'
 Plug 'w0rp/ale'
 
 call plug#end()
@@ -76,3 +84,14 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standar
 
 """""""""""" Deoplete
 let g:deoplete#enable_at_startup = 1
+
+
+"""""""""""" Snippets
+let g:neosnippet#snippets_directory='~/.vim/snippets/'
+let g:neosnippet#disable_runtime_snippets = {
+    \ '_': 1
+    \ }
+
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
