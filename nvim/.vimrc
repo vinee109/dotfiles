@@ -58,14 +58,6 @@ Plug 'w0rp/ale'
 call plug#end()
 
 
-"""""""""""" Mappings
-" Swap directions of j and k movement keys
-" j - moves cursor up one line
-" k - moves cursor down one line
-nnoremap j k
-nnoremap k j
-
-
 """""""""""" Split Screen
 set splitright
 set splitbelow
