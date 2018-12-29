@@ -46,23 +46,40 @@ autocmd BufWritePre * :%s/\s\+$//e
 """""""""""" Plugins
 call plug#begin('~/.vim/plugged')
 
-Plug 'airblade/vim-gitgutter'
+" File Explorer and Navigation
 Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'zchee/deoplete-go', { 'do': 'make'}
+Plug 'ctrlpvim/ctrlp.vim'
+
+" Appearance
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'kaicataldo/material.vim'
-Plug 'Shougo/neosnippet.vim'
+
+" Git
+Plug 'airblade/vim-gitgutter'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+
+" Linting
 Plug 'w0rp/ale'
+
+" Autocomplete
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+
+" Go
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'zchee/deoplete-jedi'
-Plug 'davidhalter/jedi-vim'
+Plug 'zchee/deoplete-go', { 'do': 'make'}
+
+" Javascript & React
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+
+" Python
+Plug 'zchee/deoplete-jedi'
+Plug 'davidhalter/jedi-vim'
+
+" Snippets
+Plug 'Shougo/neosnippet.vim'
 
 call plug#end()
 
