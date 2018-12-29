@@ -58,6 +58,9 @@ Plug 'w0rp/ale'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'zchee/deoplete-jedi'
 Plug 'davidhalter/jedi-vim'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 
 call plug#end()
 
