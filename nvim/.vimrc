@@ -47,6 +47,8 @@ autocmd BufWritePre * :%s/\s\+$//e
 call plug#begin('~/.vim/plugged')
 
 Plug 'airblade/vim-gitgutter'
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-go', { 'do': 'make'}
 Plug 'vim-airline/vim-airline'
@@ -102,3 +104,15 @@ let g:neosnippet#disable_runtime_snippets = {
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+
+"""""""""""" NerdTree
+" Ctrl-b opens up the file explorer
+map <C-b> :NERDTreeToggle<CR>
+
+" Open a NERDTree automatically when vim starts up if no files were specified
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+" Ignore certain patterns
+let g:NERDTreeIgnore = ['^node_modules$']
