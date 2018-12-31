@@ -25,9 +25,13 @@ endif
 set background=dark
 colorscheme material
 let g:material_theme_style = 'dark'
-let g:airline_theme = 'material'
 
 set cursorline					" Highlight the current line
+
+" Configure Airline
+let g:airline_theme = 'material'
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#hunks#enabled = 0
 
 
 """""""""""" Editor
@@ -58,6 +62,7 @@ Plug 'kaicataldo/material.vim'
 " Git
 Plug 'airblade/vim-gitgutter'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'tpope/vim-fugitive'
 
 " Linting
 Plug 'w0rp/ale'
