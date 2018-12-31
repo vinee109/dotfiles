@@ -261,11 +261,11 @@
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>410 381 620 392 0 0 1440 900 </string>
 	<key>NSWindow Frame SessionsPreferences</key>
-	<string>-2291 293 606 469 -2560 0 2560 1440 </string>
+	<string>115 130 606 469 0 0 1440 900 </string>
 	<key>NSWindow Frame SharedPreferences</key>
 	<string>159 380 796 486 0 0 1440 900 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 0 1440 877 0 0 1440 900 </string>
+	<string>722 0 715 877 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>634 -400 490 377 634 -900 1440 877 </string>
 	<key>New Bookmarks</key>
@@ -1221,7 +1221,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2018-12-19T07:37:42Z</date>
+	<date>2018-12-31T03:45:48Z</date>
 	<key>SUSkippedVersion</key>
 	<string>3.2.6</string>
 	<key>SavePasteHistory</key>
@@ -1256,6 +1256,8 @@
 	<true/>
 	<key>UseLionStyleFullscreen</key>
 	<true/>
+	<key>UseMetal</key>
+	<false/>
 	<key>WebKitDefaultFontSize</key>
 	<integer>11</integer>
 	<key>WebKitStandardFont</key>
