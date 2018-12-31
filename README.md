@@ -12,6 +12,7 @@ My custom way of personalizing my development environment, workflow and system.
 - Vim/NeoVim - editor
 - Git - version control
 - Spectacle - window management
+- Karabiner - remapping keys
 - Other Misc tools
   - [grip](https://github.com/joeyespo/grip) - visualizes `.md` files in Github
     Flavored Markdown
@@ -98,6 +99,13 @@ Copy over the preferences from this repo into the Specacle app.
 
 ```
 cp spectacle/shortcuts.json ~/Library/Application\ Support/Spectacle/Shortcuts.json
+```
+
+## Karabiner
+Copy over the `karabiner` folder in this repo into `~/.config/`
+
+```
+cp -r karabiner ~/.config/
 ```
 
 # Thanks
