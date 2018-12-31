@@ -26,7 +26,9 @@
         "editorCursor.foreground": "#DEDEDE",
         "statusBar.background" : "#1A1A1A",
         "statusBar.noFolderBackground" : "#212121",
-        "editor.background": "#161616"
+        "editor.background": "#161616",
+        "input.background": "#161616",
+        "input.border": "#3c3c3c"
     },
     "workbench.statusBar.feedback.visible": false,
     "workbench.statusBar.visible": true,
@@ -54,4 +56,6 @@
     "eslint.provideLintTask": true,
     "editor.suggest.localityBonus": true,
     "editor.codeLens": false,
+    "gitlens.views.fileHistory.enabled": true,
+    "gitlens.views.lineHistory.enabled": true,
 }
