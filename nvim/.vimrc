@@ -48,7 +48,7 @@ autocmd BufWritePre * :%s/\s\+$//e
 
 
 """""""""""" Plugins
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.local/share/nvim/plugged')
 
 " File Explorer and Navigation
 Plug 'scrooloose/nerdtree'
