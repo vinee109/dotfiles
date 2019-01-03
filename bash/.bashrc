@@ -97,6 +97,11 @@ alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
 alias preview="open -a \"Preview\""
 alias rmsc="find ~/Desktop -name \"Screen Shot*.png\" -delete"
 
+# Arcanist aliases
+alias ad="arc diff"
+alias ado="arc diff --only"
+alias alt="arc lint"
+
 # ================================================================================
 #
 # UTILITIES
