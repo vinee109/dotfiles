@@ -300,8 +300,8 @@ function pullbranch()
     git pull origin $BRANCH
 }
 
-if [ -f ~/.git-completion.bash ]; then
-    . ~/.git-completion.bash
+if [ -f ~/dotfiles/git/.git-completion.bash ]; then
+    . ~/dotfiles/git/.git-completion.bash
     __git_complete gch _git_checkout
     __git_complete gc _git_commit
     __git_complete ga _git_add
