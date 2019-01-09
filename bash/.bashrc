@@ -101,6 +101,7 @@ alias rmsc="find ~/Desktop -name \"Screen Shot*.png\" -delete"
 alias ad="arc diff"
 alias ado="arc diff --only"
 alias alt="arc lint"
+alias al="arc land"
 
 # ================================================================================
 #
