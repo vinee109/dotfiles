@@ -312,6 +312,6 @@ if [ -f ~/dotfiles/git/.git-completion.bash ]; then
     __git_complete ga _git_add
 fi
 
-if [ -f ~/.uber_bashrc ]; then
-    source ~/.uber_bashrc
+if [ -f ~/.do-not-commit_bashrc ]; then
+  source ~/.do-not-commit_bashrc
 fi
