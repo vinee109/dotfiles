@@ -34,6 +34,7 @@ set cursorline					" Highlight the current line
 let g:airline_theme = 'material'
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#hunks#enabled = 0
+let g:airline#extensions#ale#enabled = 1
 
 
 """""""""""" Editor
@@ -140,3 +141,6 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " Ignore certain patterns
 let g:NERDTreeIgnore = ['^node_modules$']
+
+"""""""""""" ALE (global settings)
+let g:ale_fix_on_save = 1
