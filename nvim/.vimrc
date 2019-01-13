@@ -57,7 +57,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 " File Explorer and Navigation
 Plug 'scrooloose/nerdtree'
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
+Plug 'junegunn/fzf.vim'
 
 " Appearance
 Plug 'vim-airline/vim-airline'
@@ -106,9 +107,12 @@ noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 
 
-"""""""""""" Ctrl P
+"""""""""""" FZF
+" Map <C-p> to call FZF
+nnoremap <C-p> :FZF<CR>
+
 " Exclude files in .gitignore from search results
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
 
 
 """""""""""" Jedi-Vim
