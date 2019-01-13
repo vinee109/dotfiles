@@ -3,12 +3,14 @@ filetype plugin on
 set updatetime=100
 let g:python3_host_prog = '/usr/local/bin/python3'
 
-
 " By default use tabwidth = 2 spaces
 set tabstop=2
 set expandtab
 set shiftwidth=2
 set softtabstop=2
+
+" Map leader to ,
+let mapleader = ","
 
 
 """""""""""" Appearance (Color, Cursor, etc.)
