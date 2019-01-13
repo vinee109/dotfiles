@@ -41,7 +41,7 @@ let g:bufferline_echo = 0
 
 """""""""""" Editor
 syntax on
-set number					" Show line numbers
+set number				    	" Show line numbers
 set autoindent					" Enable auto indenting
 
 " Enable folding
@@ -50,6 +50,12 @@ set foldlevel=99
 
 " Remove trailing whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e
+
+" Space to dismiss highlights
+nnoremap <space> :nohlsearch<CR>
+
+" Set shortcut for reloading all buffers
+nnoremap <leader>r :bufdo e<CR>
 
 
 """""""""""" Plugins
