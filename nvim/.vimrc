@@ -135,10 +135,6 @@ xmap <C-k>     <Plug>(neosnippet_expand_target)
 " Ctrl-b opens up the file explorer
 map <C-b> :NERDTreeToggle<CR>
 
-" Open a NERDTree automatically when vim starts up if no files were specified
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-
 " Ignore certain patterns
 let g:NERDTreeIgnore = ['^node_modules$']
 
