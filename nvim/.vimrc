@@ -36,6 +36,8 @@ let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#hunks#enabled = 0
 let g:airline#extensions#ale#enabled = 1
 
+" Configure Bufferline
+let g:bufferline_echo = 0
 
 """""""""""" Editor
 syntax on
@@ -61,6 +63,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'kaicataldo/material.vim'
+Plug 'bling/vim-bufferline'
 
 " Git
 Plug 'airblade/vim-gitgutter'
