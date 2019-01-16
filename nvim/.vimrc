@@ -57,6 +57,9 @@ nnoremap <space> :nohlsearch<CR>
 " Set shortcut for reloading all buffers
 nnoremap <leader>r :bufdo e<CR>
 
+" Map <C-f> to perform text search
+nnoremap <C-f> :Ag<CR>
+
 
 """""""""""" Plugins
 call plug#begin('~/.local/share/nvim/plugged')
