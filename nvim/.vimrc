@@ -36,8 +36,6 @@ let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#hunks#enabled = 0
 let g:airline#extensions#ale#enabled = 1
 
-" Configure Bufferline
-let g:bufferline_echo = 0
 
 """""""""""" Editor
 syntax on
@@ -58,11 +56,20 @@ nnoremap <space> :nohlsearch<CR>
 nnoremap <leader>r :bufdo e<CR>
 
 " Map <C-f> to perform text search
-nnoremap <C-f> :Ag<CR>
+nnoremap <C-F> :Ag<CR>
 
+
+"""""""""""" Editor
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 25
 
 """""""""""" Plugins
 call plug#begin('~/.local/share/nvim/plugged')
+
+Plug 'scrooloose/nerdcommenter'
 
 " File Explorer and Navigation
 Plug 'scrooloose/nerdtree'
@@ -73,7 +80,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'kaicataldo/material.vim'
-Plug 'bling/vim-bufferline'
 
 " Git
 Plug 'airblade/vim-gitgutter'
@@ -94,6 +100,7 @@ Plug 'zchee/deoplete-go', { 'do': 'make'}
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+Plug 'leafgarland/typescript-vim'
 
 " Python
 Plug 'zchee/deoplete-jedi'
@@ -101,6 +108,8 @@ Plug 'davidhalter/jedi-vim'
 
 " Snippets
 Plug 'Shougo/neosnippet.vim'
+
+Plug 'jiangmiao/auto-pairs'
 
 call plug#end()
 
@@ -110,10 +119,10 @@ set splitright
 set splitbelow
 
 " ctrl+[hjkl] navigate to different split panes
-noremap <C-h> <C-w>h
-noremap <C-l> <C-w>l
-noremap <C-j> <C-w>j
-noremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
 
 
 """""""""""" FZF
@@ -123,10 +132,23 @@ nnoremap <C-p> :FZF<CR>
 " Exclude files in .gitignore from search results
 let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
 
+set hidden
+
 
 """""""""""" Jedi-Vim
 let g:jedi#completions_enabled = 0
 
+
+"""""""""""" vim-go
+" Configure syntax highlighting specific for go
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_types = 1
 
 """""""""""" Deoplete
 let g:deoplete#enable_at_startup = 1
@@ -153,6 +175,15 @@ map <C-b> :NERDTreeToggle<CR>
 
 " Ignore certain patterns
 let g:NERDTreeIgnore = ['^node_modules$']
+let g:NERDTreeShowHidden=1
+
+
+"""""""""""" NerdTreeCommenter
+let g:NERDDefaultAlign = 'left'
+
 
 """""""""""" ALE (global settings)
+let g:ale_open_list = 1
+let g:ale_lint_on_text_changed = 'never'
 let g:ale_fix_on_save = 1
+nmap <silent> <leader>z :ALENextWrap<cr>

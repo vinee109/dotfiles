@@ -1,0 +1,7 @@
+snippet     funcTest
+abbr        func Test... (t *testing.T) { ... }
+options     head
+  func Test${1} (t *testing.T) {
+    t.Parallel()
+    ${2}
+  }
