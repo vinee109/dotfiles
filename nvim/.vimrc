@@ -79,7 +79,7 @@ Plug 'junegunn/fzf.vim'
 " Appearance
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'kaicataldo/material.vim'
+Plug 'kaicataldo/material.vim', {'commit': '5aabe47'}  " Breaking changes were made after this commit so pinning to last working version
 
 " Git
 Plug 'airblade/vim-gitgutter'
@@ -158,6 +158,8 @@ set completeopt-=preview
 " Depoplete-jedi
 let g:deoplete#sources#jedi#show_docstring = 1
 
+" Deoplete-go
+let g:deoplete#sources#go#gocode_binary = '$GOPATH/bin/gocode'
 
 """""""""""" Snippets
 let g:neosnippet#snippets_directory='~/.vim/snippets/'
