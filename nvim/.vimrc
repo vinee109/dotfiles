@@ -110,6 +110,7 @@ Plug 'davidhalter/jedi-vim'
 Plug 'Shougo/neosnippet.vim'
 
 Plug 'jiangmiao/auto-pairs'
+Plug 'blindFS/vim-taskwarrior'
 
 call plug#end()
 
