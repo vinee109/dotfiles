@@ -111,4 +111,4 @@ export YVM_DIR=/Users/vineet/.yvm
 # zsh-autosuggestions
 bindkey '^ ' autosuggest-execute
 
-export UBER_HOME="$HOME/Uber"
+source ~/.do-not-commit.zsh
