@@ -150,6 +150,8 @@ let g:go_highlight_methods = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_types = 1
+" autocomplete
+let g:go_def_mode = 'gopls'
 
 """""""""""" Deoplete
 let g:deoplete#enable_at_startup = 1

@@ -68,6 +68,20 @@ revert() {
     fab test
 }
 
+rebase() {
+    BRANCH=$(git rev-parse --abbrev-ref HEAD)
+    echo -e "Switching to branch master...\n"
+    git checkout master 2>/dev/null || { git checkout master; return 1; }
+    echo -e "Pulling remote changes to master...\n"
+    git pull || return 2
+    echo -e "Rebasing branch $BRANCH\n"
+    git checkout $BRANCH
+    git rebase -i master
+    if [ -f fabfile.py ]; then
+        fab test
+    fi
+}
+
 pushbranch() {
     BRANCH=$(git rev-parse --abbrev-ref HEAD)
     git push origin $BRANCH
