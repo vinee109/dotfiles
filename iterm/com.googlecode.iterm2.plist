@@ -52,14 +52,14 @@
 	<real>1</real>
 	<key>GlobalKeyMap</key>
 	<dict>
-		<key>0x6c-0x100000</key>
+		<key>0x5b-0x100000</key>
 		<dict>
 			<key>Action</key>
 			<integer>31</integer>
 			<key>Text</key>
 			<string></string>
 		</dict>
-		<key>0x72-0x100000</key>
+		<key>0x5d-0x100000</key>
 		<dict>
 			<key>Action</key>
 			<integer>30</integer>
@@ -104,7 +104,7 @@
 		<key>0xf702-0x380000</key>
 		<dict>
 			<key>Action</key>
-			<integer>33</integer>
+			<integer>3</integer>
 			<key>Text</key>
 			<string></string>
 		</dict>
@@ -125,7 +125,7 @@
 		<key>0xf703-0x380000</key>
 		<dict>
 			<key>Action</key>
-			<integer>34</integer>
+			<integer>1</integer>
 			<key>Text</key>
 			<string></string>
 		</dict>
@@ -260,13 +260,13 @@
 		<integer>1</integer>
 	</dict>
 	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>530 493 620 392 0 0 1680 1050 </string>
+	<string>970 516 620 392 0 0 2560 1080 </string>
 	<key>NSWindow Frame SessionsPreferences</key>
 	<string>220 120 606 469 0 0 1680 1050 </string>
 	<key>NSWindow Frame SharedPreferences</key>
 	<string>239 469 918 514 0 0 1680 1050 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>825 376 505 392 0 0 2560 1080 </string>
+	<string>492 635 490 392 0 0 2560 1080 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>0 200 505 367 0 0 2560 1080 </string>
 	<key>New Bookmarks</key>
@@ -1075,11 +1075,13 @@
 	</array>
 	<key>NoSyncAllAppVersions</key>
 	<array>
-		<string>3.2.6</string>
-		<string>3.3.9</string>
+		<string>3.3.11</string>
 		<string>3.3.8</string>
-		<string>3.3.4</string>
+		<string>3.2.6</string>
+		<string>3.3.12</string>
 		<string>3.3.7beta1</string>
+		<string>3.3.9</string>
+		<string>3.3.4</string>
 	</array>
 	<key>NoSyncBFPRecents</key>
 	<array>
@@ -1089,25 +1091,27 @@
 	<key>NoSyncFrame_SessionsPreferences</key>
 	<dict>
 		<key>screenFrame</key>
-		<string>{{0, 0}, {2560, 1080}}</string>
+		<string>{{0, 0}, {2560, 1440}}</string>
 		<key>topLeft</key>
 		<string>{269, 595}</string>
 	</dict>
 	<key>NoSyncFrame_SharedPreferences</key>
 	<dict>
 		<key>screenFrame</key>
-		<string>{{0, 0}, {2560, 1080}}</string>
+		<string>{{2560, -501}, {1080, 2560}}</string>
 		<key>topLeft</key>
-		<string>{294, 747}</string>
+		<string>{2699, 717}</string>
 	</dict>
 	<key>NoSyncHaveRequestedFullDiskAccess</key>
+	<true/>
+	<key>NoSyncHaveUsedCopyMode</key>
 	<true/>
 	<key>NoSyncHaveWarnedAboutPasteConfirmationChange</key>
 	<true/>
 	<key>NoSyncInstallationId</key>
 	<string>250EC4C8-6B7D-45BB-A8C3-D33499AD5D6E</string>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>54</integer>
+	<integer>83</integer>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -1898,11 +1902,11 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2020-04-02T06:34:20Z</date>
+	<date>2020-08-29T21:41:44Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SUSkippedVersion</key>
-	<string>3.3.9</string>
+	<string>3.3.12</string>
 	<key>SUUpdateRelaunchingMarker</key>
 	<false/>
 	<key>SavePasteHistory</key>
@@ -1962,7 +1966,7 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.3.9</string>
+	<string>3.3.12</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
