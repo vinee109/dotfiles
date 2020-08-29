@@ -87,7 +87,10 @@ source $ZSH/oh-my-zsh.sh
 export EDITOR=nvim
 export GOPATH=$HOME/gocode
 export PATH=$HOME/bin:/usr/local/bin:$GOPATH/bin:$PATH
+export CXX=/usr/bin/clang++
+export CC=/usr/bin/clang
 
+eval "$(direnv hook zsh)"
 # -------------------------------------------------------------------------------------
 # nvm Setup
 # -------------------------------------------------------------------------------------
