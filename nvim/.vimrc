@@ -87,7 +87,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tpope/vim-fugitive'
 
 " Linting
-Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
 
 " Autocomplete
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -191,6 +191,11 @@ let g:NERDDefaultAlign = 'left'
 """""""""""" ALE (global settings)
 let g:ale_open_list = 1
 let g:ale_lint_on_text_changed = 'never'
+let g:ale_linters = {'go': ['golangci-lint']}
 let g:ale_fix_on_save = 1
 nmap <silent> <leader>z :ALENextWrap<cr>
 let $USE_SYSTEM_GO=1
+
+"Set options for golangci-lint
+let g:ale_go_golangci_lint_options = ""
+let g:ale_go_golangci_lint_package = 1
