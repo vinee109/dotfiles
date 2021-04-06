@@ -86,11 +86,11 @@ Plug 'airblade/vim-gitgutter'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tpope/vim-fugitive'
 
-" Linting
-Plug 'dense-analysis/ale'
-
-" Autocomplete
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Code
+Plug 'jiangmiao/auto-pairs'
+Plug 'dense-analysis/ale' " Linting
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Autocomplete
+Plug 'Shougo/neosnippet.vim' " Snippets
 
 " Go
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
@@ -106,11 +106,8 @@ Plug 'leafgarland/typescript-vim'
 Plug 'zchee/deoplete-jedi'
 Plug 'davidhalter/jedi-vim'
 
-" Snippets
-Plug 'Shougo/neosnippet.vim'
-
-Plug 'jiangmiao/auto-pairs'
-Plug 'blindFS/vim-taskwarrior'
+" Productivity
+Plug 'vimwiki/vimwiki'
 
 call plug#end()
 
@@ -199,3 +196,6 @@ let $USE_SYSTEM_GO=1
 "Set options for golangci-lint
 let g:ale_go_golangci_lint_options = ""
 let g:ale_go_golangci_lint_package = 1
+
+"""""""""""" Vim Wiki
+let g:vimwiki_list = [{'path': '~/notes/'}]
