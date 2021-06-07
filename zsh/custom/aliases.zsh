@@ -74,5 +74,5 @@ alias gst="git stash"
 alias pull="git submodule update && git pull"
 alias undo="git reset HEAD~"
 alias rebase="git checkout master && git pull && git checkout - && git rebase -i master"
-alias rebasemaine="git checkout main && git pull && git checkout - && git rebase -i main"
+alias rebasemain="git checkout main && git pull && git checkout - && git rebase -i main"
 
