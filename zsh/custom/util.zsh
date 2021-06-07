@@ -68,14 +68,6 @@ revert() {
     fab test
 }
 
-rebase() {
-    if [ `git branch | egrep "^[[:space:]]+${master}$"` ]
-        git checkout master && git pull && git checkout - && git rebase -i master
-    then
-        git checkout main && git pull && git checkout - && git rebase -i main
-    fi
-}
-
 pushbranch() {
     BRANCH=$(git rev-parse --abbrev-ref HEAD)
     git push origin $BRANCH

@@ -30,7 +30,7 @@ alias rmsc="find ~/Desktop -name \"Screen Shot*.png\" -delete"
 #
 # Aliases for common usages of arc
 # ================================================================================
-alias ad="arc diff"
+alias ad="arc diff HEAD^"
 alias ado="arc diff --only"
 alias alt="arc lint"
 alias al="arc land"
@@ -73,4 +73,6 @@ alias gsp="git stash pop"
 alias gst="git stash"
 alias pull="git submodule update && git pull"
 alias undo="git reset HEAD~"
+alias rebase="git checkout master && git pull && git checkout - && git rebase -i master"
+alias rebasemaine="git checkout main && git pull && git checkout - && git rebase -i main"
 
