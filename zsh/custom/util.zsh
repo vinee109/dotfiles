@@ -69,16 +69,10 @@ revert() {
 }
 
 rebase() {
-    BRANCH=$(git rev-parse --abbrev-ref HEAD)
-    echo -e "Switching to branch master...\n"
-    git checkout master 2>/dev/null || { git checkout master; return 1; }
-    echo -e "Pulling remote changes to master...\n"
-    git pull || return 2
-    echo -e "Rebasing branch $BRANCH\n"
-    git checkout $BRANCH
-    git rebase -i master
-    if [ -f fabfile.py ]; then
-        fab test
+    if [ `git branch | egrep "^[[:space:]]+${master}$"` ]
+        git checkout master && git pull && git checkout - && git rebase -i master
+    then
+        git checkout main && git pull && git checkout - && git rebase -i main
     fi
 }
 
