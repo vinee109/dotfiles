@@ -1,7 +1,7 @@
 """""""""""" System Settings
 filetype plugin on
 set updatetime=100
-let g:python3_host_prog = '/usr/local/bin/python3'
+let g:python3_host_prog = '/usr/bin/python3'
 
 " By default use tabwidth = 2 spaces
 set tabstop=2
@@ -129,6 +129,7 @@ nnoremap <C-p> :FZF<CR>
 
 " Exclude files in .gitignore from search results
 let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
+let g:fzf_layout = { 'down': '~40%' }
 
 set hidden
 
@@ -149,7 +150,9 @@ let g:go_highlight_structs = 1
 let g:go_highlight_types = 1
 
 " autocomplete
-let g:go_def_mode='godef'
+let g:go_def_mode='gopls'
+
+nnoremap <leader>u :GoReferrers<CR>
 
 """""""""""" Deoplete
 let g:deoplete#enable_at_startup = 1
@@ -160,6 +163,8 @@ let g:deoplete#sources#jedi#show_docstring = 1
 
 " Deoplete-go
 let g:deoplete#sources#go#gocode_binary = '$GOPATH/bin/gocode'
+
+call deoplete#custom#option('num_processes', 4) " https://github.com/carlitux/deoplete-ternjs/issues/88
 
 """""""""""" Snippets
 let g:neosnippet#snippets_directory='~/.vim/snippets/'
