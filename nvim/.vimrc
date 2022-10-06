@@ -1,3 +1,7 @@
+if $VIM_PATH != ""
+  let $PATH = $VIM_PATH
+endif
+
 """""""""""" System Settings
 filetype plugin on
 set updatetime=100
@@ -89,21 +93,16 @@ Plug 'tpope/vim-fugitive'
 " Code
 Plug 'jiangmiao/auto-pairs'
 Plug 'dense-analysis/ale' " Linting
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Autocomplete
-Plug 'Shougo/neosnippet.vim' " Snippets
 
 " Go
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'zchee/deoplete-go', { 'do': 'make'}
 
 " Javascript & React
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
-Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 Plug 'leafgarland/typescript-vim'
 
 " Python
-Plug 'zchee/deoplete-jedi'
 Plug 'davidhalter/jedi-vim'
 
 " Productivity
@@ -160,17 +159,6 @@ let g:go_gopls_gofumpt = v:true
 let g:go_gopls_settings = {'memoryMode': 'DegradeClosed'}
 
 nnoremap <leader>u :GoReferrers<CR>
-"""""""""""" Deoplete
-let g:deoplete#enable_at_startup = 1
-set completeopt-=preview
-
-" Depoplete-jedi
-let g:deoplete#sources#jedi#show_docstring = 1
-
-" Deoplete-go
-let g:deoplete#sources#go#gocode_binary = '$GOPATH/bin/gocode'
-
-call deoplete#custom#option('num_processes', 4) " https://github.com/carlitux/deoplete-ternjs/issues/88
 
 """""""""""" Snippets
 let g:neosnippet#snippets_directory='~/.vim/snippets/'
