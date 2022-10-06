@@ -151,9 +151,15 @@ let g:go_highlight_types = 1
 
 " autocomplete
 let g:go_def_mode='gopls'
+" linting
+let g:go_metalinter_command = 'gopls'
+
+" Configure gopls
+let g:go_gopls_staticcheck = v:true
+let g:go_gopls_gofumpt = v:true
+let g:go_gopls_settings = {'memoryMode': 'DegradeClosed'}
 
 nnoremap <leader>u :GoReferrers<CR>
-
 """""""""""" Deoplete
 let g:deoplete#enable_at_startup = 1
 set completeopt-=preview
@@ -191,16 +197,22 @@ let g:NERDDefaultAlign = 'left'
 
 
 """""""""""" ALE (global settings)
+
+" Disable gopls' diagnostics reporting.
+let g:go_diagnostics_level = 0
+let g:go_highlight_diagnostic_errors = 0
+let g:go_highlight_diagnostic_warnings = 0
+
 let g:ale_open_list = 1
 let g:ale_lint_on_text_changed = 'never'
-let g:ale_linters = {'go': ['golangci-lint']}
-let g:ale_fix_on_save = 1
+let g:ale_linters = {'go': ['gopls']}
+let g:ale_fix_on_save = 0
 nmap <silent> <leader>z :ALENextWrap<cr>
 let $USE_SYSTEM_GO=1
 
-"Set options for golangci-lint
-let g:ale_go_golangci_lint_options = ""
-let g:ale_go_golangci_lint_package = 1
+let g:ale_go_gopls_init_options = {'staticcheck': v:true, 'gofumpt': v:true, 'memoryMode': 'DegradeClosed'}
+" Share vim-go's existing gopls session instead of starting a new one.
+let g:ale_go_gopls_options = '-remote=auto'
 
 """""""""""" Vim Wiki
 let g:vimwiki_list = [{'path': '~/notes/'}]
