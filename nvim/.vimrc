@@ -29,8 +29,8 @@ endif
 
 " Set up color theme
 set background=dark
+let g:material_theme_style = 'darker'
 colorscheme material
-let g:material_theme_style = 'dark'
 
 set cursorline					" Highlight the current line
 
