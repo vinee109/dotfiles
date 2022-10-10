@@ -1,11 +1,11 @@
-if $VIM_PATH != ""
-  let $PATH = $VIM_PATH
-endif
-
 """""""""""" System Settings
 filetype plugin on
 set updatetime=100
 let g:python3_host_prog = '/usr/bin/python3'
+
+if $VIM_PATH != ""
+        let $PATH = $VIM_PATH
+endif
 
 " By default use tabwidth = 2 spaces
 set tabstop=2
@@ -38,8 +38,6 @@ set cursorline					" Highlight the current line
 let g:airline_theme = 'material'
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#hunks#enabled = 0
-let g:airline#extensions#ale#enabled = 1
-
 
 """""""""""" Editor
 syntax on
@@ -70,6 +68,7 @@ let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 let g:netrw_winsize = 25
 
+
 """""""""""" Plugins
 call plug#begin('~/.local/share/nvim/plugged')
 
@@ -83,30 +82,27 @@ Plug 'junegunn/fzf.vim'
 " Appearance
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'kaicataldo/material.vim', {'commit': '5aabe47'}  " Breaking changes were made after this commit so pinning to last working version
+Plug 'kaicataldo/material.vim',
 
 " Git
 Plug 'airblade/vim-gitgutter'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tpope/vim-fugitive'
 
+" LSP
+Plug 'neovim/nvim-lspconfig'
+Plug 'folke/lsp-colors.nvim'
+
 " Code
-Plug 'jiangmiao/auto-pairs'
-Plug 'dense-analysis/ale' " Linting
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/cmp-path'
 
-" Go
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-
-" Javascript & React
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
-Plug 'leafgarland/typescript-vim'
-
-" Python
-Plug 'davidhalter/jedi-vim'
-
-" Productivity
-Plug 'vimwiki/vimwiki'
+" Trouble
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'folke/trouble.nvim'
 
 call plug#end()
 
@@ -136,41 +132,6 @@ set hidden
 """""""""""" Jedi-Vim
 let g:jedi#completions_enabled = 0
 
-
-"""""""""""" vim-go
-" Configure syntax highlighting specific for go
-let g:go_highlight_build_constraints = 1
-let g:go_highlight_extra_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_types = 1
-
-" autocomplete
-let g:go_def_mode='gopls'
-" linting
-let g:go_metalinter_command = 'gopls'
-
-" Configure gopls
-let g:go_gopls_staticcheck = v:true
-let g:go_gopls_gofumpt = v:true
-let g:go_gopls_settings = {'memoryMode': 'DegradeClosed'}
-
-nnoremap <leader>u :GoReferrers<CR>
-
-"""""""""""" Snippets
-let g:neosnippet#snippets_directory='~/.vim/snippets/'
-let g:neosnippet#disable_runtime_snippets = {
-    \ '_': 1
-    \ }
-
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
-
-
 """""""""""" NerdTree
 " Ctrl-b opens up the file explorer
 map <C-b> :NERDTreeToggle<CR>
@@ -184,23 +145,71 @@ let g:NERDTreeShowHidden=1
 let g:NERDDefaultAlign = 'left'
 
 
-"""""""""""" ALE (global settings)
+"""""""""""" Trouble
+lua << EOF
+require("trouble").setup {
+    icons = false,
+    fold_open = "▼",    -- icon use for open folds
+    fold_closed = "▶",  -- icon used for closed folds
+    signs = {
+        -- icons / text used for a diagnostic
+        error = "error",
+        warning = "warn",
+        hint = "hint",
+        information = "info"
+    },
+    auto_open = true,     -- automatically open the list when you have diagnostics
+    auto_close = true,    -- automatically close the list when you have no diagnostics
+}
 
-" Disable gopls' diagnostics reporting.
-let g:go_diagnostics_level = 0
-let g:go_highlight_diagnostic_errors = 0
-let g:go_highlight_diagnostic_warnings = 0
+-- Don't use virtual text to display diagnostics.
+-- Signs in the gutter + trouble is enough.
+vim.diagnostic.config({
+    virtual_text = false,
+})
 
-let g:ale_open_list = 1
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_linters = {'go': ['gopls']}
-let g:ale_fix_on_save = 0
-nmap <silent> <leader>z :ALENextWrap<cr>
-let $USE_SYSTEM_GO=1
+EOF
 
-let g:ale_go_gopls_init_options = {'staticcheck': v:true, 'gofumpt': v:true, 'memoryMode': 'DegradeClosed'}
-" Share vim-go's existing gopls session instead of starting a new one.
-let g:ale_go_gopls_options = '-remote=auto'
+"""""""""""" LSP Config
+lua << EOF
+local opts = { noremap=true, silent=true }
+local lsp_capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-"""""""""""" Vim Wiki
-let g:vimwiki_list = [{'path': '~/notes/'}]
+local on_attach = function(client, bufnr)
+  -- Enable completion triggered by <c-x><c-o>
+  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+  -- Keybindings
+  --  K            Documentation
+  --  <leader>d    Go to definition
+  --  <space>rn    Rename
+  --  <space>ca    Code action
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>d', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+end
+
+-- Completion
+local cmp = require 'cmp'
+cmp.setup {
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp' },
+  }),
+}
+
+-- Go
+require('lspconfig').gopls.setup {
+        cmd = {'gopls', '-remote=auto'},
+        on_attach = on_attach,
+        flags = {
+            -- Don't spam LSP with changes. Wait 100ms between each
+            debounce_text_changes = 100,
+        },
+        capabilities = lsp_capabilities,
+        init_options = {
+          gofumpt = true,
+          memoryMode = "DegradeClosed",
+          staticcheck = true,
+        }
+}
+EOF

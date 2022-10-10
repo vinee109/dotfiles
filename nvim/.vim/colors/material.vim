@@ -85,13 +85,13 @@ if g:material_theme_style == 'palenight' || g:material_theme_style == 'palenight
   let s:line_numbers = { 'gui': '#3a3f58', 'cterm': 60 }
   let s:line_highlight = { 'gui': '#1c1f2b', 'cterm': 234 }
 elseif g:material_theme_style == 'darker' || g:material_theme_style == 'darker-community'
-  let s:bg = { 'gui': '#000000', 'cterm': 'none' }
+  let s:bg = { 'gui': '#080808', 'cterm': 'none' }
   let s:fg = { 'gui': '#eeffff', 'cterm': 231 }
   let s:invisibles = { 'gui': '#65737e', 'cterm': 66 }
   let s:comments = { 'gui': '#545454', 'cterm': 59 }
   let s:selection = { 'gui': '#2c2c2c', 'cterm': 237 }
   let s:guides = { 'gui': '#424242', 'cterm': 0 }
-  let s:line_numbers = { 'gui': '#424242', 'cterm': 0 }
+  let s:line_numbers = { 'gui': '#4f4f4f', 'cterm': 0 }
   let s:line_highlight = { 'gui': '#171717', 'cterm': 0 }
 elseif g:material_theme_style == 'ocean' || g:material_theme_style == 'ocean-community'
   let s:bg = { 'gui': '#0f111a', 'cterm': 'none' }

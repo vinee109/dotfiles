@@ -13,6 +13,3 @@ set tabstop=4
 
 set textwidth=120
 set formatoptions+=c
-
-"""""""""""" Keybindings
-nmap <leader>d :GoDef<cr>
