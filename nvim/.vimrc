@@ -4,7 +4,7 @@ set updatetime=100
 let g:python3_host_prog = '/usr/bin/python3'
 
 if $VIM_PATH != ""
-        let $PATH = $VIM_PATH
+  let $PATH = $VIM_PATH
 endif
 
 " By default use tabwidth = 2 spaces
@@ -15,58 +15,6 @@ set softtabstop=2
 
 " Map leader to ,
 let mapleader = ","
-
-
-"""""""""""" Appearance (Color, Cursor, etc.)
-" Enable true colors - taken from setup in https://github.com/kaicataldo/material.vim
-if (has("nvim"))
-  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-endif
-
-if (has("termguicolors"))
-  set termguicolors
-endif
-
-" Set up color theme
-set background=dark
-let g:material_theme_style = 'darker'
-colorscheme material
-
-set cursorline					" Highlight the current line
-
-" Configure Airline
-let g:airline_theme = 'material'
-let g:airline#extensions#branch#enabled = 1
-let g:airline#extensions#hunks#enabled = 0
-
-"""""""""""" Editor
-syntax on
-set number				    	" Show line numbers
-set autoindent					" Enable auto indenting
-
-" Enable folding
-set foldmethod=indent
-set foldlevel=99
-
-" Remove trailing whitespace on save
-autocmd BufWritePre * :%s/\s\+$//e
-
-" Space to dismiss highlights
-nnoremap <space> :nohlsearch<CR>
-
-" Set shortcut for reloading all buffers
-nnoremap <leader>r :bufdo e<CR>
-
-" Map <C-f> to perform text search
-nnoremap <C-F> :Ag<CR>
-
-
-"""""""""""" Editor
-let g:netrw_banner = 0
-let g:netrw_liststyle = 3
-let g:netrw_browse_split = 4
-let g:netrw_altv = 1
-let g:netrw_winsize = 25
 
 
 """""""""""" Plugins
@@ -80,9 +28,10 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 
 " Appearance
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'kaicataldo/material.vim',
+Plug 'nvim-lualine/lualine.nvim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'NvChad/nvim-colorizer.lua'
+Plug 'marko-cerovac/material.nvim'
 
 " Git
 Plug 'airblade/vim-gitgutter'
@@ -107,6 +56,67 @@ Plug 'folke/trouble.nvim'
 call plug#end()
 
 
+"""""""""""" Appearance (Color, Cursor, etc.)
+if (has("termguicolors"))
+  set termguicolors
+endif
+
+" Set up color theme
+set background=dark
+set cursorline					" Highlight the current line
+
+" Configure color scheme
+lua << EOF
+require'colorizer'.setup()
+require('lualine').setup({
+  options = {
+    icons_enabled = false,
+    theme = 'material',
+    component_separators = { left = '', right = ''},
+    section_separators = { left = '', right = '' },
+  },
+})
+require('material').setup({
+  lualine_style = 'default',
+  custom_colors = {
+    fg = '#DCE2E5',
+    bg = '#080808',
+  },
+})
+EOF
+
+let g:material_style = "deep ocean"
+colorscheme material
+
+
+"""""""""""" Editor
+syntax on
+set number				    	" Show line numbers
+set autoindent					" Enable auto indenting
+
+" Enable folding
+set foldmethod=indent
+set foldlevel=99
+
+" Remove trailing whitespace on save
+autocmd BufWritePre * :%s/\s\+$//e
+
+" Space to dismiss highlights
+nnoremap <space> :nohlsearch<CR>
+
+" Set shortcut for reloading all buffers
+nnoremap <leader>r :bufdo e<CR>
+
+" Map <C-f> to perform text search
+nnoremap <C-F> :Ag<CR>
+
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 25
+
+
 """""""""""" Split Screen
 set splitright
 set splitbelow
@@ -129,9 +139,6 @@ let g:fzf_layout = { 'down': '~40%' }
 set hidden
 
 
-"""""""""""" Jedi-Vim
-let g:jedi#completions_enabled = 0
-
 """""""""""" NerdTree
 " Ctrl-b opens up the file explorer
 map <C-b> :NERDTreeToggle<CR>
@@ -147,6 +154,16 @@ let g:NERDDefaultAlign = 'left'
 
 """""""""""" Trouble
 lua << EOF
+
+-- Configure lsp-colors used by trouble
+require("lsp-colors").setup({
+  Error = "#db4b4b",
+  Warning = "#e0af68",
+  Information = "#0db9d7",
+  Hint = "#10B981"
+})
+
+-- Configure trouble styling
 require("trouble").setup {
     icons = false,
     fold_open = "▼",    -- icon use for open folds
@@ -160,6 +177,7 @@ require("trouble").setup {
     },
     auto_open = true,     -- automatically open the list when you have diagnostics
     auto_close = true,    -- automatically close the list when you have no diagnostics
+    use_diagnostic_signs = false,
 }
 
 -- Don't use virtual text to display diagnostics.
@@ -169,6 +187,7 @@ vim.diagnostic.config({
 })
 
 EOF
+
 
 """""""""""" LSP Config
 lua << EOF
@@ -211,5 +230,27 @@ require('lspconfig').gopls.setup {
           memoryMode = "DegradeClosed",
           staticcheck = true,
         }
+}
+EOF
+
+
+"""""""""""" Treesitter
+lua << EOF
+require'nvim-treesitter.configs'.setup {
+   -- A list of parser names, or "all"
+  ensure_insalled = { "go" },
+  -- Install parsers synchronously (only applied to `ensure_installed`)
+  sync_install = false,
+  -- Automatically install missing parsers when entering buffer
+  auto_install = true,
+
+  highlight = {
+    enable = true,
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = false,
+  },
 }
 EOF
