@@ -85,7 +85,7 @@ require('material').setup({
 })
 EOF
 
-let g:material_style = "deep ocean"
+let g:material_style = "darker"
 colorscheme material
 
 
@@ -107,8 +107,8 @@ nnoremap <space> :nohlsearch<CR>
 " Set shortcut for reloading all buffers
 nnoremap <leader>r :bufdo e<CR>
 
-" Map <C-f> to perform text search
-nnoremap <C-F> :Ag<CR>
+" Map Ctrl+Shift+f to perform text search
+nnoremap <CS-f> :Ag<CR>
 
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
@@ -133,7 +133,7 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-p> :FZF<CR>
 
 " Exclude files in .gitignore from search results
-let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
+let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git --ignore env --ignore __pycache__ -g ""'
 let g:fzf_layout = { 'down': '~40%' }
 
 set hidden
@@ -146,7 +146,7 @@ map <C-b> :NERDTreeToggle<CR>
 " Ignore certain patterns
 let g:NERDTreeIgnore = ['^node_modules$']
 let g:NERDTreeShowHidden=1
-
+let g:NERDTreeMinimalMenu=1
 
 """""""""""" NerdTreeCommenter
 let g:NERDDefaultAlign = 'left'
@@ -175,8 +175,8 @@ require("trouble").setup {
         hint = "hint",
         information = "info"
     },
-    auto_open = true,     -- automatically open the list when you have diagnostics
-    auto_close = true,    -- automatically close the list when you have no diagnostics
+    auto_open = false,     -- automatically open the list when you have diagnostics
+    auto_close = false,    -- automatically close the list when you have no diagnostics
     use_diagnostic_signs = false,
 }
 
@@ -192,6 +192,7 @@ EOF
 """""""""""" LSP Config
 lua << EOF
 local opts = { noremap=true, silent=true }
+local flags = { debounce_text_changes=150 }
 local lsp_capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 local on_attach = function(client, bufnr)
@@ -220,10 +221,7 @@ cmp.setup {
 require('lspconfig').gopls.setup {
         cmd = {'gopls', '-remote=auto'},
         on_attach = on_attach,
-        flags = {
-            -- Don't spam LSP with changes. Wait 100ms between each
-            debounce_text_changes = 100,
-        },
+        flags = flags,
         capabilities = lsp_capabilities,
         init_options = {
           gofumpt = true,
@@ -231,6 +229,14 @@ require('lspconfig').gopls.setup {
           staticcheck = true,
         }
 }
+
+-- Python
+require('lspconfig').pyright.setup {
+  on_attach = on_attach,
+  flags = flags,
+  capabilities = lsp_capabilities,
+}
+
 EOF
 
 
@@ -238,7 +244,7 @@ EOF
 lua << EOF
 require'nvim-treesitter.configs'.setup {
    -- A list of parser names, or "all"
-  ensure_insalled = { "go" },
+  ensure_insalled = { "go", "python" },
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
   -- Automatically install missing parsers when entering buffer
