@@ -76,7 +76,9 @@ require('material').setup({
   custom_colors = {
     fg = '#DCE2E5',
     bg = '#080808',
-    accent = '#89DFFF',
+  },
+  custom_highlights = {
+    CursorLineNr = { fg = '#89DFFF' },
   },
 })
 EOF
