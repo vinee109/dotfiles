@@ -76,6 +76,7 @@ require('material').setup({
   custom_colors = {
     fg = '#DCE2E5',
     bg = '#080808',
+    accent = '#89DFFF',
   },
 })
 EOF
@@ -85,7 +86,7 @@ colorscheme material
 lua << EOF
 -- Configure lualine
 local theme = require'lualine.themes.material-nvim'
-theme.normal.a.bg = '#89ddff'
+theme.normal.a.bg = '#82aaff'
 
 require('lualine').setup({
   options = {
