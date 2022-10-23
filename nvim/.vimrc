@@ -153,8 +153,8 @@ set hidden
 
 
 """""""""""" NerdTree
-" Ctrl-b opens up the file explorer
-map <C-b> :NERDTreeToggle<CR>
+" <leader>t opens up the file explorer for current file
+map <leader>t :NERDTreeFind<CR>
 
 " Ignore certain patterns
 let g:NERDTreeIgnore = ['^node_modules$']
