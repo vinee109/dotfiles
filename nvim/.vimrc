@@ -29,9 +29,11 @@ Plug 'junegunn/fzf.vim'
 
 " Appearance
 Plug 'nvim-lualine/lualine.nvim'
+Plug 'arkav/lualine-lsp-progress'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'NvChad/nvim-colorizer.lua'
-Plug 'marko-cerovac/material.nvim'
+Plug 'marko-cerovac/material.nvim', {'commit': 'de33236e23cab880a1ab3d1cfdc828d3eedbddf8'}
+Plug 'kyazdani42/nvim-web-devicons'
 
 " Git
 Plug 'airblade/vim-gitgutter'
@@ -50,7 +52,6 @@ Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/cmp-path'
 
 " Trouble
-Plug 'kyazdani42/nvim-web-devicons'
 Plug 'folke/trouble.nvim'
 
 call plug#end()
@@ -65,17 +66,11 @@ endif
 set background=dark
 set cursorline					" Highlight the current line
 
-" Configure color scheme
 lua << EOF
+-- Configure colors
 require'colorizer'.setup()
-require('lualine').setup({
-  options = {
-    icons_enabled = false,
-    theme = 'material',
-    component_separators = { left = '', right = ''},
-    section_separators = { left = '', right = '' },
-  },
-})
+
+-- Configure Material theme
 require('material').setup({
   lualine_style = 'default',
   custom_colors = {
@@ -84,9 +79,26 @@ require('material').setup({
   },
 })
 EOF
-
 let g:material_style = "darker"
 colorscheme material
+
+lua << EOF
+-- Configure lualine
+local theme = require'lualine.themes.material-nvim'
+theme.normal.a.bg = '#89ddff'
+
+require('lualine').setup({
+  options = {
+       icons_enabled = false,
+    theme = theme,
+    component_separators = { left = '', right = ''},
+    section_separators = { left = '', right = '' },
+  },
+  sections = {
+    lualine_c = {'filename', 'lsp_progress'},
+  },
+})
+EOF
 
 
 """""""""""" Editor
