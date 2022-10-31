@@ -24,8 +24,8 @@ Plug 'scrooloose/nerdcommenter'
 
 " File Explorer and Navigation
 Plug 'scrooloose/nerdtree'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
-Plug 'junegunn/fzf.vim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 
 " Appearance
 Plug 'nvim-lualine/lualine.nvim'
@@ -50,9 +50,10 @@ Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/cmp-path'
-
-" Trouble
 Plug 'folke/trouble.nvim'
+
+" Editing
+Plug 'jiangmiao/auto-pairs'
 
 call plug#end()
 
@@ -122,9 +123,6 @@ nnoremap <space> :nohlsearch<CR>
 " Set shortcut for reloading all buffers
 nnoremap <leader>r :bufdo e<CR>
 
-" Map Ctrl+Shift+f to perform text search
-nnoremap <CS-f> :Ag<CR>
-
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
@@ -143,20 +141,9 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 
 
-"""""""""""" FZF
-" Map <C-p> to call FZF
-nnoremap <C-p> :FZF<CR>
-
-" Exclude files in .gitignore from search results
-let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git --ignore env --ignore __pycache__ -g ""'
-let g:fzf_layout = { 'down': '~40%' }
-
-set hidden
-
-
 """""""""""" NerdTree
 " <leader>t opens up the file explorer for current file
-map <leader>t :NERDTreeFind<CR>
+map <C-t> :NERDTreeFind<CR>
 
 " Ignore certain patterns
 let g:NERDTreeIgnore = ['^node_modules$']
@@ -221,13 +208,19 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>d', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>r', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
 end
 
 -- Completion
 local cmp = require 'cmp'
 cmp.setup {
+  mapping = cmp.mapping.preset.insert({
+    ['<C-j>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-k>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<CR>'] = cmp.mapping.confirm({ select = false }),
+  }),
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
   }),
@@ -299,3 +292,36 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 EOF
+
+
+"""""""""""" Telescope
+lua << EOF
+require('telescope').setup{
+  defaults = {
+    mappings = {
+      n = {
+        ["<C-j>"] = "move_selection_next",
+        ["<C-k>"] = "move_selection_previous",
+      },
+      i = {
+        ["<C-j>"] = "move_selection_next",
+        ["<C-k>"] = "move_selection_previous",
+      },
+    },
+  },
+  pickers = {
+    find_files = {
+      disable_devicons = true,
+    },
+    live_grep = {
+      disable_devicons = true,
+    },
+  },
+}
+EOF
+
+" Keybindings
+"   Ctrl-p        find_files
+"   Ctrl-Shift-f  live_grep
+nnoremap <C-p> :Telescope find_files<cr>
+nnoremap <CS-f> :Telescope live_grep<cr>
