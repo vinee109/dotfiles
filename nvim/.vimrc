@@ -72,14 +72,39 @@ lua << EOF
 require'colorizer'.setup()
 
 -- Configure Material theme
-require('material').setup({
+local colors = require 'material.colors'
+require'material'.setup({
   lualine_style = 'default',
+  plugins = { -- Here, you can disable(set to false) plugins that you don't use or don't want to apply the theme to
+        trouble = true,
+        nvim_cmp = true,
+        -- gitsigns = true,
+        git_gutter = true,
+        telescope = true,
+        -- nvim_tree = true,
+        -- sidebar_nvim = true,
+        -- lsp_saga = true,
+        -- nvim_dap = true,
+        -- nvim_navic = true,
+        -- which_key = true,
+        -- sneak = true,
+        -- hop = true,
+        -- indent_blankline = true,
+        -- nvim_illuminate = true,
+        -- mini = true,
+  },
   custom_colors = {
     fg = '#DCE2E5',
     bg = '#080808',
   },
   custom_highlights = {
     CursorLineNr = { fg = '#89DFFF' },
+    Search = { bg = colors.yellow, bold = true },
+    IncSearch = { link = 'Search' },
+    -- Telescope
+    TelescopeSelection = { fg = colors.yellow, bg = colors.selection },
+    TelescopeSelectionCaret = { link = "TelescopeSelection" },
+    TelescopeMatching = {fg = colors.yellow, bold = true },
   },
 })
 EOF
