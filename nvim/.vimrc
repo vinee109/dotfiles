@@ -220,7 +220,7 @@ EOF
 lua << EOF
 local opts = { noremap=true, silent=true }
 local flags = { debounce_text_changes=500 }
-local lsp_capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 local on_attach = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
@@ -265,7 +265,7 @@ require('lspconfig').gopls.setup {
 }
 
 function FormatAndImports(wait_ms)
-    vim.lsp.buf.formatting_sync(nil, wait_ms)
+    vim.lsp.buf.format(nil, wait_ms)
     local params = vim.lsp.util.make_range_params()
     params.context = {only = {"source.organizeImports"}}
     local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, wait_ms)
