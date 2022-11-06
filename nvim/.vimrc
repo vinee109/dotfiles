@@ -102,12 +102,13 @@ require'material'.setup({
     Search = { bg = colors.yellow, bold = true },
     IncSearch = { link = 'Search' },
     -- Telescope
-    TelescopeSelection = { fg = colors.yellow, bg = colors.selection },
+    TelescopeSelection = { fg = '#89DFFF', bg = '#404040', bold = true },
     TelescopeSelectionCaret = { link = "TelescopeSelection" },
     TelescopeMatching = {fg = colors.yellow, bold = true },
   },
 })
 EOF
+
 let g:material_style = "darker"
 colorscheme material
 
