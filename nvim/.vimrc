@@ -358,6 +358,7 @@ require('telescope').setup{
   pickers = {
     find_files = {
       disable_devicons = true,
+      find_command = { "rg", "--files", "--hidden", "--glob", "!.git/*" },
     },
     live_grep = {
       disable_devicons = true,
