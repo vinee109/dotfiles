@@ -54,6 +54,7 @@ Plug 'folke/trouble.nvim'
 Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+Plug 'chrisbra/csv.vim'
 
 " Editing
 Plug 'jiangmiao/auto-pairs'
@@ -371,4 +372,4 @@ EOF
 "   Ctrl-p        find_files
 "   Ctrl-Shift-f  live_grep
 nnoremap <C-p> :Telescope find_files<cr>
-nnoremap <CS-f> :Telescope live_grep<cr>
+nnoremap <C-s> :Telescope live_grep<cr>
